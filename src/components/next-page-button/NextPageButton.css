@@ -1,0 +1,12 @@
+div.NextPageButton button {
+    border: none;
+    border-radius: 1em;
+    padding-left: 2em;
+    padding-right: 2em;
+    cursor: pointer;
+    background-color: #ffffff;
+    color: #5071fb;
+    border-color: #5071fb;
+    border: solid;
+    font-size: 2em;
+}
