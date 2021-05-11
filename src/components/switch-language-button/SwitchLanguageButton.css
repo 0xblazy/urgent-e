@@ -1,30 +1,47 @@
-.SwitchLanguageButton{
-    border:none;
-    background-color: #5071fb;
-    color:white;
-    border-radius: 1em;
+.SwitchLanguageButton {
     position: fixed;
     right: 2em;
     top:2em;
+
+    margin: 0;
     padding:0.5em;
-    font-weight: bold;
+
     cursor: pointer;
-}
 
-.SwitchLanguageButton:hover{
     background-color: #5071fb;
-    color:white;
+    color: #ffffff;
+    font-weight: bold;
+
+    border:none;
+    border-radius: 1em;
 }
 
-.SwitchLanguageButton span{
-    color:white;
-    font-weight: normal;
+.SwitchLanguageButton:hover {
+    background-color: #5071fb;
+    color: #ffffff;
+}
+
+.SwitchLanguageButton span {
     margin:0.2em;
+
+    color:#ffffff;
+    font-weight: normal;
     font-size: 0.8em;
 }
 
-.SwitchLanguageButton span.active{
+.SwitchLanguageButton span.active {
     color: #b3bbff;
     font-weight: bold;
     font-size: 1em;
+}
+
+@media screen and (max-width: 400px) {
+    .SwitchLanguageButton {
+        right: 1em;
+        top: 1em;
+
+        padding: 1em;
+
+        border-radius: 2em;
+    }
 }

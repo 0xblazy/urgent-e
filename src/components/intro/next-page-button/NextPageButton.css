@@ -1,0 +1,30 @@
+div.NextPageButton {
+    margin-top: 1em;
+}
+
+div.NextPageButton button {
+    padding: 0 2em;
+
+    cursor: pointer;
+
+    background-color: #ffffff;
+    color: #5071fb;
+    font-size: 2em;
+
+    border-radius: 1em;
+    border-color: #5071fb;
+    border: solid;
+}
+
+div.NextPageButton button:hover {
+    background-color: #5071fb;
+    color: #ffffff;
+
+    border-color: #5071fb;
+}
+
+@media screen and (max-width: 400px) {
+    div.NextPageButton button {
+        font-size: 1.5em;
+    }
+}

@@ -1,0 +1,17 @@
+div.Navigation ul {
+    display: flex;
+
+    margin: 0;
+    padding: 0;
+}
+
+div.Navigation li {
+    margin: 0;
+    margin-left: 1em;
+
+    list-style: none;
+}
+
+div.Navigation li:first-child {
+    margin: 0;
+}
