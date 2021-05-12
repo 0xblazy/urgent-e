@@ -8,7 +8,7 @@
 
     cursor: pointer;
 
-    background-color: #5071fb;
+    background-color: #5271ff;
     color: #ffffff;
     font-weight: bold;
 
@@ -17,7 +17,7 @@
 }
 
 .SwitchLanguageButton:hover {
-    background-color: #5071fb;
+    background-color: #5271ff;
     color: #ffffff;
 }
 

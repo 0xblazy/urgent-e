@@ -1,41 +1,67 @@
 import React from 'react';
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import './App.css';
+
 import Navigation from './components/navigation/Navigation';
 import Intro from './components/intro/Intro';
-import Home from './components/home/Home';
+import Dashboard from './components/dashboard/Dashboard';
 import Confidentiality from './components/confidentiality/Confidentiality';
 import MyInformations from './components/my-informations/MyInformations';
-import SwitchLanguageButton from './components/switch-language-button/SwitchLanguageButton';
+import Emergency from './components/emergency/Emergency';
+
 import Translator from './utils/Translator'; 
-import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 
 export default class App extends React.Component {
     constructor(props) {
         super(props);
+
         this.state = {
-            language:"fr"
+            language: "fr",
+            intro: true
         }
     }
 
-    on_language_change = (language)=>{
+    on_language_change = (language) => {
         this.setState({
-            language:language
+            language: language
+        });
+    }
+
+    on_intro_change = (intro) => {
+        this.setState({
+            intro: intro
         });
     }
 
     render() {
         return (
             <div className="App">
-                <SwitchLanguageButton onLanguageChange={(language)=>this.on_language_change(language)} language={this.state.language} />
                 <Router>
-                    <Intro language={this.state.language} />
-                    <Navigation language={this.state.language} />
+                    
+                    {/* Affiche la navigation si on n'est pas dans l'intro */}
+                    {! this.state.intro && <Navigation language={this.state.language} />}
 
                     <Switch>
-                        <Route path="/" exact component={() => <Home language={this.state.language} />} />
-                        <Route path="/confidentiality" exact component={() => <Confidentiality language={this.state.language} />} />
-                        <Route path="/my-informations" exact component={() => <MyInformations language={this.state.language} />} /> 
-                        <Route path="/" component={()=> <div>{Translator.translate("error", this.state.language)}</div>} />
+                        <Route path="/" exact render={
+                            () => <Dashboard language={this.state.language} />
+                        } />
+                        <Route path="/intro" exact render={
+                            () => <Intro language={this.state.language} 
+                            onIntroChange={(intro) => this.on_intro_change(intro)} 
+                            onLanguageChange={(language) => this.on_language_change(language)} />
+                        } /> 
+                        <Route path="/confidentiality" exact render={
+                            () => <Confidentiality language={this.state.language} />
+                        } />
+                        <Route path="/my-informations" exact render={
+                            () => <MyInformations language={this.state.language} />
+                        } /> 
+                        <Route path="/emergency" exact render={
+                            () => <Emergency language={this.state.language} />
+                        } />
+                        <Route path="/" render={
+                            ()=> <div>{Translator.translate("error", this.state.language)}</div>
+                        } />
                     </Switch>
                 </Router>
             </div>

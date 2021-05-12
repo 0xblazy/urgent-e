@@ -1,4 +1,5 @@
 div.NextPageButton {
+    margin: 0;
     margin-top: 1em;
 }
 
@@ -8,19 +9,63 @@ div.NextPageButton button {
     cursor: pointer;
 
     background-color: #ffffff;
-    color: #5071fb;
+    color: #5271ff;
     font-size: 2em;
 
     border-radius: 1em;
-    border-color: #5071fb;
-    border: solid;
+    border: 0.1em solid #5271ff;
 }
 
 div.NextPageButton button:hover {
-    background-color: #5071fb;
+    background-color: #5271ff;
     color: #ffffff;
+}
 
-    border-color: #5071fb;
+div.NextPageButton.small {
+    width: 100%;
+
+    margin-top: 0;
+    margin-bottom: 2em;
+}
+
+div.steps {
+    position: relative;
+    display: flex;
+    justify-content: space-evenly;
+    height: 3.5em;
+
+    padding: 0 1.5em;
+}
+
+div.steps button.dot {
+    width: 1em;
+    height: 1em;
+
+    padding: 0;
+
+    background-color: #ffffff;
+
+    border-radius: 3em;
+    border: 0.01em solid #777777;
+}
+
+div.steps button.dot.active {
+    background-color: #5071fb;
+}
+
+div.steps button.skip {
+    position: absolute;
+    right: 2em;
+    bottom: 0;
+
+    padding: 0;
+
+    background-color: none;
+    color: #5271ff;
+    font-size: 0.8em;
+
+    border: none;
+    border-radius: 0;
 }
 
 @media screen and (max-width: 400px) {
