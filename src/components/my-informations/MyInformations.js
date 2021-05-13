@@ -4,9 +4,8 @@ import Translator from '../../utils/Translator';
 
 export default class MyInformations extends React.Component {
 
-    constructor(props) {
-        super(props);
-
+    componentDidMount() {
+        this.props.onPathChange("/my-informations");
     }
 
     render() {

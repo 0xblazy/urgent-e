@@ -31,8 +31,6 @@ export default class SwitchLanguageButton extends React.Component{
 
         this.setState({
             current_language: new_language
-        }, () => {
-            console.log(this.state.current_language);
         });
 
         this.props.onLanguageChange(new_language);

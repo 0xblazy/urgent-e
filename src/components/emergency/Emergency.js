@@ -5,8 +5,8 @@ import Translator from '../../utils/Translator';
 
 export default class Emergency extends React.Component {
 
-    constructor(props) {
-        super(props);
+    componentDidMount() {
+        this.props.onPathChange("/emergency");
     }
    
     render() {

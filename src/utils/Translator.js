@@ -3,7 +3,7 @@ export default class Translator {
     static keys = {
         en: {
             error: "ERROR 404",
-            slogan : "Your heal, our priority",
+            slogan : "Your health, our priority",
             slide_1: "The application that helps you manage your daily health, alerts you in an emergency and facilitates your emergency care.",
             slide_2: "Connect your device with a single click to view your constants at any time.",
             slide_3: "Fill in your symptoms, personal information and location, we'll take care of the rest!",

@@ -1,0 +1,66 @@
+div.LogoContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    position: fixed;
+    top: 1.5em;
+
+    transition: top .2s ease;
+}
+
+div.LogoContainer button {
+    margin: 0;
+    padding: 0;
+
+    cursor: pointer;
+
+    background-color: transparent;
+    
+    border: none;
+}
+
+div.LogoContainer img {
+    height: 3.75em;
+
+    transition: height .2s ease;
+}
+
+div.LogoContainer.intro {
+    position: relative;
+}
+
+div.LogoContainer.intro img {
+    height: 15em;
+
+    transition: none;
+}
+
+div.LogoContainer.slideshow {
+    top: 2em;
+
+    transition: none;
+}
+
+div.LogoContainer.slideshow img {
+    height: 6.25em;
+}
+
+@media screen and (max-width: 450px) {
+    div.LogoContainer {
+        top: 1em;
+    }
+
+    div.LogoContainer img {
+        height: 3em;
+    }
+
+    div.LogoContainer.intro img {
+        height: 12em;
+    }
+
+    div.LogoContainer.slideshow img {
+        height: 5em;
+    }
+}

@@ -2,6 +2,7 @@ div.SlideShow {
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 100%;
 }
 
 div.SlideShow h3 {
@@ -9,40 +10,112 @@ div.SlideShow h3 {
     margin-top: 1em;
 
     color: #5271ff;
-    font-family: "Varela Round", sans-serif;
+    font-family: Poppins, sans-serif;
+    font-weight: normal;
     font-size: 2em;
     text-align: center;
 }
 
-div.SlideShow img {
+div.SlideShow div.slideshow-container {
+    position: relative;
+    width: 100%;
     height: 20em;
 
-    margin-bottom: 5em;
+    overflow: hidden;
 }
 
-div.SlideShow h4 {
-    margin: 0;
+div.SlideShow div.slider-container {
+    position: absolute;
+    left: 0;
+    width: 400%;
+    height: 20em;
 
-    padding: 0 1em;
+    transition: left 1s ease;
+}
 
-    color: #5271ff;
-    font-family: "Valera Round", sans-serif;
-    font-size: 2em;
+div.SlideShow div.slider-container.step-1 {left: 0;}
+div.SlideShow div.slider-container.step-2 {left: -100%;}
+div.SlideShow div.slider-container.step-3 {left: -200%;}
+div.SlideShow div.slider-container.step-4 {left: -300%;}
+
+div.slider-container div.step-1,
+div.slider-container div.step-2,
+div.slider-container div.step-3,
+div.slider-container div.step-4 {
+    position: absolute;
+    width: 25%;
+    height: 20em;
+
     text-align: center;
 }
 
-@media screen and (max-width: 400px) {
+div.slider-container div.step-1 {left: 0;}
+div.slider-container div.step-2 {left: 25%;}
+div.slider-container div.step-3 {left: 50%;}
+div.slider-container div.step-4 {left: 75%;}
+
+div.slider-container div.step-1 img,
+div.slider-container div.step-2 img,
+div.slider-container div.step-3 img,
+div.slider-container div.step-4 img {
+    height: 20em;
+}
+
+div.SlideShow div.legend {
+    position: relative;
+    width: 100%;
+    height: 10em;
+
+    margin-top: 1em;
+}
+
+div.legend h4 {
+    position: absolute;
+    top: 0;
+    margin: 0;
+    padding: 0 1em;
+    opacity: 1;
+
+    color: #5271ff;
+    font-family: Poppins, sans-serif;
+    font-weight: normal;
+    font-size: 2em;
+    text-align: center;
+
+    transition: opacity 1s .5s ease;
+}
+
+div.legend.step-1 h4:not(#step-1) {opacity: 0; transition: opacity .5s ease;}
+div.legend.step-2 h4:not(#step-2) {opacity: 0; transition: opacity .5s ease;}
+div.legend.step-3 h4:not(#step-3) {opacity: 0; transition: opacity .5s ease;}
+div.legend.step-4 h4:not(#step-4) {opacity: 0; transition: opacity .5s ease;}
+
+
+@media screen and (max-width: 450px) {
     div.SlideShow h3 {
-        font-size: 1em;
+        font-size: 1.25em;
     }
 
-    div.SlideShow img {
-        height: 12em;
-
-        margin-bottom: 4em;
+    div.SlideShow div.slideshow-container,
+    div.SlideShow div.slider-container,
+    div.slider-container div.step-1,
+    div.slider-container div.step-2,
+    div.slider-container div.step-3,
+    div.slider-container div.step-4,
+    div.slider-container div.step-1 img,
+    div.slider-container div.step-2 img,
+    div.slider-container div.step-3 img,
+    div.slider-container div.step-4 img {
+        height: 13em;
     }
 
-    div.SlideShow h4 {
-        font-size: 1.4em;
+    div.SlideShow div.legend {
+        height: 13em;
+
+        margin-bottom: -6em;
+    }
+
+    div.legend h4 {
+        font-size: 1.5em;
     }
 }

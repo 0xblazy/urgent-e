@@ -16,18 +16,11 @@ div#root {
     background-color: #ffffff;
 }
 
-html > div,
-body > div,
-div.App > div,
-div#root > div {
-    flex: 1;
-}
-
 footer,
 a,
 a:hover,
 a:visited {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: Poppins, sans-serif;
     color: #3f50b5;
     font-size: 0.8em;
     padding: 0.2em;

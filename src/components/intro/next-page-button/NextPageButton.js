@@ -5,10 +5,6 @@ import Translator from '../../../utils/Translator';
 
 export default class NextPageButton extends React.Component {
 
-    constructor(props) {
-        super(props);
-    }
-    
     small_class = () => {
         return this.props.step !== 0 ? " small" : "";
     }

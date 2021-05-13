@@ -1,15 +1,17 @@
 .SwitchLanguageButton {
+    z-index: 100;
     position: fixed;
     right: 2em;
-    top:2em;
+    top: 1.5em;
 
     margin: 0;
-    padding:0.5em;
+    padding: 0.5em;
 
     cursor: pointer;
 
     background-color: #5271ff;
     color: #ffffff;
+    font-family: Poppins, sans-serif;
     font-weight: bold;
 
     border:none;
@@ -26,13 +28,13 @@
 
     color:#ffffff;
     font-weight: normal;
-    font-size: 0.8em;
+    font-size: 1em;
 }
 
 .SwitchLanguageButton span.active {
     color: #b3bbff;
     font-weight: bold;
-    font-size: 1em;
+    font-size: 1.2em;
 }
 
 @media screen and (max-width: 400px) {
@@ -40,8 +42,8 @@
         right: 1em;
         top: 1em;
 
-        padding: 1em;
+        padding: 0.8em;
 
-        border-radius: 2em;
+        border-radius: 1.5em;
     }
 }

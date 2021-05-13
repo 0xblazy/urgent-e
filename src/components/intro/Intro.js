@@ -17,6 +17,7 @@ class Intro extends React.Component {
     }
 
     componentDidMount() {
+        this.props.onPathChange("/intro");
         this.props.onIntroChange(true);
     }
 
@@ -24,6 +25,10 @@ class Intro extends React.Component {
         this.setState({
             step: new_step
         }, () => {
+            // Met à jour le path pour indiquer que l'on est dans le diapo
+            if (this.state.step > 0) {
+                this.props.onPathChange("/intro/slideshow");
+            }
             // Renvoi à l'accueil après avoir passé l'intro
             if (this.state.step > 4) {
                 const {history} = this.props;
@@ -36,20 +41,15 @@ class Intro extends React.Component {
         });
     }
 
-    small_class = () => {
-        return this.state.step !== 0 ? " small" : "";
+    get_class_name = () => {
+        return this.state.step !== 0 ? "Intro small" : "Intro";
     }
 
     render() {
         return (
-            <div className={"Intro" + this.small_class()}>
+            <div className={this.get_class_name()}>
 
                 <SwitchLanguageButton language={this.props.language} onLanguageChange={this.props.onLanguageChange} />
-
-                <div className="logo-container">
-                    <img alt="Logo Urgent-E" src="./images/Urgent-E.png" />
-                    <h1>URGENT-E</h1>
-                </div>
 
                 <SlideShow language={this.props.language} step={this.state.step} />
 

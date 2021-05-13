@@ -3,10 +3,9 @@ import './Confidentiality.css';
 import Translator from '../../utils/Translator'; 
 
 export default class Confidentiality extends React.Component {
-
-    constructor(props) {
-        super(props);
-
+    
+    componentDidMount() {
+        this.props.onPathChange("/confidentiality");
     }
 
     render() {
