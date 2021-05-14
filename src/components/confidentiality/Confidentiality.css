@@ -1,0 +1,67 @@
+@keyframes appearance {
+    from {
+        opacity: 0;
+    } to {
+        opacity: 1;
+    }
+}
+
+div.Confidentiality {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    min-height: 100%;
+
+    margin-top: 5.25em;
+    margin-bottom: 6em;
+
+    background-color: #ffffff;
+}
+
+div.Confidentiality img {
+    height: 20em;
+
+    animation: appearance 1s 1 ease;
+}
+
+div.Confidentiality div.confi {
+    width: 100%;
+
+    margin-top: 1em;
+}
+
+div.Confidentiality div.confi h4 {
+    margin: 0;
+    padding: 0 1em;
+    
+    color: #5271ff;
+    font-family: Poppins, sans-serif;
+    font-weight: normal;
+    font-size: 2em;
+    text-align: center;
+
+    animation: appearance 1s 1 ease;
+}
+
+div.Confidentiality div.confi h4:last-child {
+    margin-top: 1em;
+}
+
+@media screen and (max-width: 450px) {
+    div.Confidentiality {
+        margin-top: 4em;
+        margin-bottom: 7em;
+    }
+
+    div.Confidentiality img {
+        height: 13em;
+    }
+
+    div.Confidentiality div.confi h4 {
+        font-size: 1.3em;
+    }
+}

@@ -1,3 +1,11 @@
+@keyframes slide-up {
+    from {
+        transform: translateY(100%);
+    } to {
+        transform: translateY(0);
+    }
+}
+
 div.Navigation {
     position: fixed;
     bottom: 0;
@@ -6,7 +14,9 @@ div.Navigation {
 
     background-color: #ffffff;
 
-    border-top: 0.1em solid #aaaaaa;
+    border-top: 0.1em solid #d9d9d9;
+
+    animation: slide-up .5s 1 ease;
 }
 
 div.Navigation ul {
@@ -18,10 +28,13 @@ div.Navigation ul {
 }
 
 div.Navigation a {
+    margin: 0.25em;
+
     color: #5271ff;
     font-family: Poppins, sans-serif;
+    font-weight: 500;
     text-decoration: none;
-    font-size: 1em;
+    font-size: 0.9em;
 }
 
 div.Navigation li {
@@ -36,4 +49,18 @@ div.Navigation li {
 
 div.Navigation li img {
     height: 3em;
+
+    margin-bottom: 0.2em;
+}
+
+@media screen and (max-width: 450px) {
+    div.Navigation a {
+        margin: 0.3em;
+
+        font-size: 0.8em;
+    }
+
+    div.Navigation li img {
+        height: 3.2em;
+    }
 }

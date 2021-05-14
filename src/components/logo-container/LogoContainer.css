@@ -33,18 +33,23 @@ div.LogoContainer.intro {
 
 div.LogoContainer.intro img {
     height: 15em;
-
+    
     transition: none;
 }
 
 div.LogoContainer.slideshow {
     top: 2em;
-
+    
     transition: none;
 }
 
 div.LogoContainer.slideshow img {
     height: 6.25em;
+}
+
+div.LogoContainer.intro button,
+div.LogoContainer.slideshow button {
+    cursor: default;
 }
 
 @media screen and (max-width: 450px) {

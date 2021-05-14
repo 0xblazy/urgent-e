@@ -1,3 +1,11 @@
+@keyframes slide-up {
+    from {
+        transform: translateY(100%);
+    } to {
+        transform: translateY(0);
+    }
+}
+
 div.NextPageButton {
     margin: 0;
     margin-top: 1em;
@@ -28,6 +36,8 @@ div.NextPageButton.small {
     bottom: 2em;
 
     width: 100%;
+    
+    animation: slide-up .5s 1 ease;
 }
 
 div.steps {
@@ -48,7 +58,7 @@ div.steps button.dot {
     background-color: #ffffff;
 
     border-radius: 3em;
-    border: 0.01em solid #777777;
+    border: 0.01em solid #707070;
 }
 
 div.steps button.dot.active {

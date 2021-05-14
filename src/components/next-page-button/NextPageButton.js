@@ -1,12 +1,12 @@
 import React from 'react';
 import './NextPageButton.css';
 
-import Translator from '../../../utils/Translator';
+import Translator from '../../utils/Translator';
 
 export default class NextPageButton extends React.Component {
 
-    small_class = () => {
-        return this.props.step !== 0 ? " small" : "";
+    get_class_name = () => {
+        return this.props.step !== 0 ? "NextPageButton small" : "NextPageButton";
     }
 
     dot_class = (index) => {
@@ -14,14 +14,19 @@ export default class NextPageButton extends React.Component {
     }
 
     skip_or_finish = () => {
-        return this.props.step === 4 ? Translator.translate("finish", this.props.language) : Translator.translate("skip", this.props.language) ;
+        if (this.props.path === "/intro" || this.props.path === "/intro/slideshow") {
+            return this.props.step === 4 ? Translator.translate("finish", this.props.language) : Translator.translate("skip", this.props.language) ;
+        } else {
+            return this.props.step === 3 ? Translator.translate("finish", this.props.language) : Translator.translate("cancel", this.props.language) ;
+        }
     }
 
     render() {
         return (
-            <div className={"NextPageButton" + this.small_class()}>
-                {/* Étape 0 */}
+            <div className={this.get_class_name()}>
+                {/* Étape 0 (Intro) */}
                 {
+                    this.props.path === "/intro" &&
                     this.props.step === 0 &&
                     <button onClick={() => this.props.onStepChange(1)}>
                         {Translator.translate("next_page", this.props.language)}
@@ -35,7 +40,13 @@ export default class NextPageButton extends React.Component {
                         <button className={this.dot_class(1)} onClick={() => this.props.onStepChange(1)}></button>
                         <button className={this.dot_class(2)} onClick={() => this.props.onStepChange(2)}></button>
                         <button className={this.dot_class(3)} onClick={() => this.props.onStepChange(3)}></button>
-                        <button className={this.dot_class(4)} onClick={() => this.props.onStepChange(4)}></button>
+
+                        {/* 4ème bouton pour l'intro */}
+                        {
+                            this.props.path === "/intro/slideshow" &&
+                            <button className={this.dot_class(4)} onClick={() => this.props.onStepChange(4)}></button>
+                        }
+                        
                         <button className="skip" onClick={() => this.props.onStepChange(5)}>{this.skip_or_finish()}</button>
                     </div>
                 }

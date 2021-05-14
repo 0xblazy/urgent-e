@@ -4,7 +4,7 @@ import './Intro.css';
 
 import SwitchLanguageButton from './switch-language-button/SwitchLanguageButton';
 import SlideShow from './slide-show/SlideShow';
-import NextPageButton from './next-page-button/NextPageButton';
+import NextPageButton from '../next-page-button/NextPageButton';
 
 class Intro extends React.Component {
 
@@ -18,7 +18,6 @@ class Intro extends React.Component {
 
     componentDidMount() {
         this.props.onPathChange("/intro");
-        this.props.onIntroChange(true);
     }
 
     on_step_change = (new_step) => {
@@ -34,7 +33,6 @@ class Intro extends React.Component {
                 const {history} = this.props;
 
                 if (history) {
-                    this.props.onIntroChange(false);
                     history.push("/");
                 }
             }
@@ -53,7 +51,7 @@ class Intro extends React.Component {
 
                 <SlideShow language={this.props.language} step={this.state.step} />
 
-                <NextPageButton language={this.props.language} step={this.state.step} onStepChange={(step) => this.on_step_change(step)} />
+                <NextPageButton language={this.props.language} path={this.props.path} step={this.state.step} onStepChange={(step) => this.on_step_change(step)} />
 
                 {
                     this.state.step === 0 &&

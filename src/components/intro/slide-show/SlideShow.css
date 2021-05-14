@@ -1,3 +1,11 @@
+@keyframes appearance {
+    from {
+        opacity: 0;
+    } to {
+        opacity: 1;
+    }
+}
+
 div.SlideShow {
     display: flex;
     flex-direction: column;
@@ -22,6 +30,8 @@ div.SlideShow div.slideshow-container {
     height: 20em;
 
     overflow: hidden;
+
+    animation: appearance 1s 1 ease;
 }
 
 div.SlideShow div.slider-container {
@@ -67,6 +77,8 @@ div.SlideShow div.legend {
     height: 10em;
 
     margin-top: 1em;
+
+    animation: appearance 1s 1 ease;
 }
 
 div.legend h4 {
@@ -109,13 +121,19 @@ div.legend.step-4 h4:not(#step-4) {opacity: 0; transition: opacity .5s ease;}
         height: 13em;
     }
 
+    div.SlideShow div.slider-container {
+        transition: left .8s ease;
+    }
+
     div.SlideShow div.legend {
         height: 13em;
 
-        margin-bottom: -6em;
+        margin-bottom: -2em;
     }
 
     div.legend h4 {
         font-size: 1.5em;
+
+        transition: opacity .8s .5s ease;
     }
 }

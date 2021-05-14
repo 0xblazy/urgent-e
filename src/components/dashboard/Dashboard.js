@@ -1,11 +1,20 @@
 import React from 'react';
+import {withRouter} from 'react-router-dom';
 import './Dashboard.css';
 import Translator from '../../utils/Translator'; 
 
-export default class Dashboard extends React.Component {
+class Dashboard extends React.Component {
 
     componentDidMount() {
         this.props.onPathChange("/");
+
+        // Redirige vers l'intro la première fois que l'on va sur l'application
+        const visited = localStorage["alreadyVisited"];
+        if (! visited) {
+            localStorage["alreadyVisited"] = true;
+            const {history} = this.props;
+            if (history) history.push("/intro");
+        } 
     }
 
     render() {
@@ -16,3 +25,5 @@ export default class Dashboard extends React.Component {
         );
     }
 }
+
+export default withRouter(Dashboard);

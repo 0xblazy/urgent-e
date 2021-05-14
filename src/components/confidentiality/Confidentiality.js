@@ -11,7 +11,11 @@ export default class Confidentiality extends React.Component {
     render() {
         return (
             <div className="Confidentiality">
-                <h1>{Translator.translate("confidentiality", this.props.language)}</h1>
+                <img src="./images/confidentiality/security.png" alt={Translator.translate("confidentiality", this.props.language)} />
+                <div className="confi">
+                    <h4>{Translator.translate("confi_1", this.props.language)}</h4>
+                    <h4>{Translator.translate("confi_2", this.props.language)}</h4>
+                </div>
             </div>
         );
     }

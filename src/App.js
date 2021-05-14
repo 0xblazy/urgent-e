@@ -18,8 +18,7 @@ export default class App extends React.Component {
 
         this.state = {
             language: "fr",
-            path: "/",
-            intro: true
+            path: "/"
         }
     }
 
@@ -35,12 +34,6 @@ export default class App extends React.Component {
         });
     }
 
-    on_intro_change = (intro) => {
-        this.setState({
-            intro: intro
-        });
-    }
-
     render() {
         return (
             <div className="App">
@@ -53,10 +46,10 @@ export default class App extends React.Component {
                             onPathChange={(path) => this.on_path_change(path)} />
                         } />
                         <Route path="/intro" exact render={
-                            () => <Intro language={this.state.language} 
+                            () => <Intro language={this.state.language}
+                            path={this.state.path}
                             onLanguageChange={(language) => this.on_language_change(language)}
-                            onPathChange={(path) => this.on_path_change(path)}
-                            onIntroChange={(intro) => this.on_intro_change(intro)} />
+                            onPathChange={(path) => this.on_path_change(path)} />
                         } /> 
                         <Route path="/confidentiality" exact render={
                             () => <Confidentiality language={this.state.language}
@@ -64,6 +57,7 @@ export default class App extends React.Component {
                         } />
                         <Route path="/my-informations" exact render={
                             () => <MyInformations language={this.state.language}
+                            path={this.state.path}
                             onPathChange={(path) => this.on_path_change(path)} />
                         } /> 
                         <Route path="/emergency" exact render={
@@ -79,6 +73,8 @@ export default class App extends React.Component {
                     {
                         this.state.path !== "/intro" &&
                         this.state.path !== "/intro/slideshow" &&
+                        this.state.path !== "/emergency" &&
+                        this.state.path !== "/my-informations" &&
                         <Navigation language={this.state.language} />
                     }
                 </Router>
