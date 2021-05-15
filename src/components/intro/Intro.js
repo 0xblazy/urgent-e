@@ -2,7 +2,7 @@ import React from 'react';
 import {withRouter} from 'react-router-dom';
 import './Intro.css';
 
-import SwitchLanguageButton from './switch-language-button/SwitchLanguageButton';
+import SwitchLanguageButton from '../switch-language-button/SwitchLanguageButton';
 import SlideShow from './slide-show/SlideShow';
 import NextPageButton from '../next-page-button/NextPageButton';
 

@@ -44,7 +44,7 @@ export default class SlideShow extends React.Component {
         for (let i = 1 ; i < 5 ; i++) {
             legend.push(
                 <h4 id={"step-" + i} key={i}>{Translator.translate("slide_" + i, this.props.language)}</h4>
-            )
+            );
         }
 
         return legend;

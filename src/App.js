@@ -58,6 +58,7 @@ export default class App extends React.Component {
                         <Route path="/my-informations" exact render={
                             () => <MyInformations language={this.state.language}
                             path={this.state.path}
+                            onLanguageChange={(language) => this.on_language_change(language)}
                             onPathChange={(path) => this.on_path_change(path)} />
                         } /> 
                         <Route path="/emergency" exact render={

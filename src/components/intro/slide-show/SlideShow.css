@@ -84,9 +84,10 @@ div.SlideShow div.legend {
 div.legend h4 {
     position: absolute;
     top: 0;
+    opacity: 1;
+
     margin: 0;
     padding: 0 1em;
-    opacity: 1;
 
     color: #5271ff;
     font-family: Poppins, sans-serif;
