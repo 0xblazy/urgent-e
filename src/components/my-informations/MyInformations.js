@@ -65,9 +65,39 @@ class MyInformations extends React.Component {
                     {this.create_title()}
                 </div>
                 
-                <div className="stepper-container">
+                <form className="stepper-container">
                     <div className={this.get_steps_classname()}>
                         <div className="step-1">
+                            <div className="form-group">
+                                <label>
+                                    <p>{Translator.translate("name", this.props.language)}</p>
+                                    <input type="text" name="name" />
+                                </label>
+                            </div>
+                            <div className="form-group">
+                                <label>
+                                    <p>{Translator.translate("firstname", this.props.language)}</p>
+                                    <input type="text" name="firstname" />
+                                </label>
+                            </div>
+                            <div className="form-group">
+                                <label>
+                                    <p>{Translator.translate("age", this.props.language)}</p>
+                                    <input type="text" name="age" />
+                                </label>
+                            </div>
+                            <div className="form-group">
+                                <label>
+                                    <p>{Translator.translate("size", this.props.language)}</p>
+                                    <input type="text" name="size" />
+                                </label>
+                            </div>
+                            <div className="form-group">
+                                <label>
+                                    <p>{Translator.translate("weight", this.props.language)}</p>
+                                    <input type="text" name="weight" />
+                                </label>
+                            </div>
 
                         </div>
                         <div className="step-2">
@@ -77,7 +107,7 @@ class MyInformations extends React.Component {
 
                         </div>
                     </div>
-                </div>
+                </form>
                 <NextPageButton language={this.props.language} step={this.state.step} onStepChange={(step) => this.on_step_change(step)} />
             </div>
         );

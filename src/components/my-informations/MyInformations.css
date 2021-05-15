@@ -82,13 +82,13 @@ div.title h3 span {
     background-color: #ffffff;
 }
 
-div.MyInformations div.stepper-container {
+div.MyInformations form.stepper-container {
     position: relative;
     width: 100%;
     height: 100%;
 
     margin-top: 12em;
-    margin-bottom: 5.85em;
+    margin-bottom: 8em;
 
     overflow: hidden;
 
@@ -112,15 +112,58 @@ div.steps-container div.step-1,
 div.steps-container div.step-2,
 div.steps-container div.step-3 {
     position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
     width: 33.33%;
     height: 100%;
 
     text-align: center;
 }
 
-div.steps-container div.step-1 {left: 0; background-color: black;}
+div.steps-container div.step-1 {left: 0; }
 div.steps-container div.step-2 {left: 33.33%; background-color: aqua;}
 div.steps-container div.step-3 {left: 66.66%; background-color: orange;}
+
+div.steps-container div.form-group {
+    width: 100%;
+}
+
+div.form-group label {
+    display: block;
+
+    margin: 0 2em;
+}
+
+div.form-group label p {
+    margin: 0;
+
+    color: #000000;
+    font-family: Poppins, sans-serif;
+    font-weight: normal;
+    font-size: 1.125em;
+    text-align: left;
+}
+
+div.form-group label input {
+    width: 100%;
+    box-sizing: border-box;
+
+    margin: 0;
+    margin-top: 0.8em;
+    padding: 0.5em 1em;
+
+    background-color: #ffffff;
+    color: #000000;
+    font-family: Poppins, sans-serif;
+    font-weight: normal;
+    font-size: 1em;
+    text-align: left;
+
+    border: 0.15em solid #5271ff;
+    border-radius: 1.5em;
+}
 
 @media screen and (max-width: 450px) {
     div.MyInformations {
@@ -141,7 +184,7 @@ div.steps-container div.step-3 {left: 66.66%; background-color: orange;}
         border-top-width: 0.08em;
     }
 
-    div.MyInformations div.stepper-container {
+    div.MyInformations form.stepper-container {
         margin-top: 10.56em;
         margin-bottom: 5.25em;
     }
