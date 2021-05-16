@@ -1,0 +1,11 @@
+.title_dashboard h3 {
+    transition: opacity .8s .5s ease;
+    font-family: Poppins, sans-serif;
+    color: #5071fb;
+    font-weight: normal;
+    font-size: 1.25em;
+    text-align: center;
+}
+
+
+

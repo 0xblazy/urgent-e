@@ -1,0 +1,39 @@
+div.EmergencyButton {
+    display: flex;
+    justify-content: center;
+}
+
+div.EmergencyButton button {
+    padding: 0.5em;
+    background-color: #ffffff;
+    color: #FF7177;
+    font-family: Poppins, sans-serif;
+    font-weight: 700;
+    font-size: 1.6em;
+    text-align: center;
+    border-radius: 3em;
+    border: 0.25em solid #FF7177;
+    overflow: hidden;
+    z-index: 0;
+    position: relative;
+    margin-right: 0px;
+}
+
+div.EmergencyButton button::before {
+    content: '';
+    position: absolute;
+    top: 2.5em;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    color: #ffffff;
+    background-color: #CC3030;
+    border-radius: 50% 50% 0 0;
+    transition: all .5s;
+    z-index: -1;
+}
+
+div.EmergencyButton button:hover::before {
+    top: 0;
+    border-radius: 0;
+}

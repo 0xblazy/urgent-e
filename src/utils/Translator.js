@@ -35,6 +35,14 @@ export default class Translator {
             chronic_diseases: "Chronic Diseases",
             surgical_history: "Surgical History",
             emergency: "Emergency",
+            go_to_emergency : "GO TO EMERGENCY",
+            link_device : "LINK MY DEVICE",
+            blood_pressure : "BLOOD PRESSURE",
+            pulse : "PULS",
+            saturation_o2 : "SATURATION O2",
+            respiratory_rate : "RESPIRATORY RATE",
+            blood_sugar : "BLOOD SUGAR",
+            temperature : "TEMPERATURE"
 
         },
         fr: {
@@ -70,7 +78,16 @@ export default class Translator {
             treatments: "Traitements",
             chronic_diseases: "Maladies Chroniques",
             surgical_history: "Antécédents Chirurgicaux",   
-            emergency: "Urgences"
+            emergency: "Urgences",
+            go_to_emergency : "ALLEZ AUX URGENCES",
+            link_device: "CONNECTER MON APPAREIL",
+            blood_pressure : "TENSION",
+            pulse : "POULS",
+            saturation_o2 : "SATURATION O2",
+            respiratory_rate : "FRÉQUENCE RESPIRATOIRE",
+            blood_sugar : "GLYCÉMIE",
+            temperature : "TEMPÉRATURE"
+
         }
     }
 

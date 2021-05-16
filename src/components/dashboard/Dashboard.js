@@ -1,7 +1,10 @@
 import React from 'react';
 import {withRouter} from 'react-router-dom';
 import './Dashboard.css';
-import Translator from '../../utils/Translator'; 
+import Translator from '../../utils/Translator';
+import EmergencyButton from "../emergency-button/EmergencyButton";
+import GridMetrics from "../grid-metrics/GridMetrics";
+import LinkDeviceButton from "../link-device-button/LinkDeviceButton";
 
 class Dashboard extends React.Component {
 
@@ -20,7 +23,14 @@ class Dashboard extends React.Component {
     render() {
         return (
             <div className="Dashboard">
-                <h1>{Translator.translate("dashboard", this.props.language)}</h1>
+                <div className="title_dashboard">
+                    <h3>{Translator.translate("dashboard", this.props.language)}</h3>
+                </div>
+                <div className="div_emergency">
+                    <EmergencyButton language={this.props.language}/>
+                </div>
+                <LinkDeviceButton language={this.props.language}/>
+                <GridMetrics language={this.props.language}/>
             </div>
         );
     }
