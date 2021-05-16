@@ -98,10 +98,8 @@ class MyInformations extends React.Component {
                                     <input type="text" name="weight" />
                                 </label>
                             </div>
-
                         </div>
                         <div className="step-2">
-
                             <div className="form-group">
                                 <label>
                                     <p>{Translator.translate("address", this.props.language)}</p>
@@ -132,41 +130,32 @@ class MyInformations extends React.Component {
                                     <input type="text" name="emergency_contact" />
                                 </label>
                             </div>
-
                         </div>
                         <div className="step-3">
-
                             <div className="form-group">
                                 <label>
                                     <p>{Translator.translate("allergies", this.props.language)}</p>
-                                    <input type="text" name="allergies" />
+                                    <textarea name="allergies" rows="2"></textarea>
                                 </label>
                             </div>
                             <div className="form-group">
                                 <label>
                                     <p>{Translator.translate("treatments", this.props.language)}</p>
-                                    <input type="text" name="treatments" />
+                                    <textarea name="treatments" rows="2"></textarea>
                                 </label>
                             </div>
                             <div className="form-group">
                                 <label>
                                     <p>{Translator.translate("chronic_diseases", this.props.language)}</p>
-                                    <input type="text" name="chronic_diseases" />
+                                    <textarea name="chronic_diseases" rows="2"></textarea>
                                 </label>
                             </div>
                             <div className="form-group">
                                 <label>
                                     <p>{Translator.translate("surgical_history", this.props.language)}</p>
-                                    <input type="text" name="surgical_history" />
+                                    <textarea name="surgical_history" rows="2"></textarea>
                                 </label>
                             </div>
-                            <div className="form-group">
-                                <label>
-                                    <p>{Translator.translate("emergency", this.props.language)}</p>
-                                    <input type="text" name="emergency" />
-                                </label>
-                            </div>
-
                         </div>
                     </div>
                 </form>

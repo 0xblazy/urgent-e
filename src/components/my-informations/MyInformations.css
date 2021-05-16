@@ -50,7 +50,7 @@ div.title h3 {
     color: #5271ff;
     font-family: Poppins, sans-serif;
     font-weight: normal;
-    font-size: 2em;
+    font-size: 1.5em;
     text-align: center;
 
     transition: opacity 1s .5s ease;
@@ -73,7 +73,7 @@ div.title h3:before {
     
     content: "";
 
-    border-top: 0.05em solid #d9d9d9;
+    border-top: 0.066em solid #d9d9d9;
 }
 
 div.title h3 span {
@@ -112,28 +112,29 @@ div.steps-container div.step-1,
 div.steps-container div.step-2,
 div.steps-container div.step-3 {
     position: absolute;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
     width: 33.33%;
     height: 100%;
+
+    overflow-y: auto;
 
     text-align: center;
 }
 
-div.steps-container div.step-1 {left: 0; }
+div.steps-container div.step-1 {left: 0;}
 div.steps-container div.step-2 {left: 33.33%;}
 div.steps-container div.step-3 {left: 66.66%;}
 
 div.steps-container div.form-group {
-    width: 100%;
+    margin: 0 1.5em;
+    margin-top: 1.5em;
+}
+
+div.steps-container div.form-group:first-child {
+    margin-top: 0;
 }
 
 div.form-group label {
     display: block;
-
-    margin: 0 2em;
 }
 
 div.form-group label p {
@@ -146,23 +147,42 @@ div.form-group label p {
     text-align: left;
 }
 
-div.form-group label input {
+div.form-group label input,
+div.form-group label textarea {
     width: 100%;
     box-sizing: border-box;
 
     margin: 0;
     margin-top: 0.8em;
-    padding: 0.5em 1em;
 
     background-color: #ffffff;
-    color: #000000;
+    color: #444444;
     font-family: Poppins, sans-serif;
     font-weight: normal;
     font-size: 1em;
     text-align: left;
 
     border: 0.15em solid #5271ff;
-    border-radius: 1.5em;
+    outline: none;
+}
+
+div.form-group label input:focus,
+div.form-group label textarea:focus {
+    border-color: #b3bbff;
+}
+
+div.form-group label input {
+    padding: 0.3em 0.6em;
+
+    border-radius: 1.25em;
+}
+
+div.form-group label textarea {
+    padding: 0.3em 0.8em;
+
+    border-radius: 2em;
+
+    resize: none;
 }
 
 @media screen and (max-width: 450px) {
@@ -171,7 +191,7 @@ div.form-group label input {
     }
 
     div.MyInformations div.title {
-        top: 6.56em;
+        top: 5em;
     }
 
     div.title h3 {
@@ -185,7 +205,7 @@ div.form-group label input {
     }
 
     div.MyInformations form.stepper-container {
-        margin-top: 10.56em;
+        margin-top: 9em;
         margin-bottom: 5.25em;
     }
 
