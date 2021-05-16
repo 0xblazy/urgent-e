@@ -102,8 +102,70 @@ class MyInformations extends React.Component {
                         </div>
                         <div className="step-2">
 
+                            <div className="form-group">
+                                <label>
+                                    <p>{Translator.translate("address", this.props.language)}</p>
+                                    <input type="text" name="address" />
+                                </label>
+                            </div>
+                            <div className="form-group">
+                                <label>
+                                    <p>{Translator.translate("phone_number", this.props.language)}</p>
+                                    <input type="text" name="phone_number" />
+                                </label>
+                            </div>
+                            <div className="form-group">
+                                <label>
+                                    <p>{Translator.translate("vital_card", this.props.language)}</p>
+                                    <input type="text" name="vital_card" />
+                                </label>
+                            </div>
+                            <div className="form-group">
+                                <label>
+                                    <p>{Translator.translate("mutual", this.props.language)}</p>
+                                    <input type="text" name="mutual" />
+                                </label>
+                            </div>
+                            <div className="form-group">
+                                <label>
+                                    <p>{Translator.translate("emergency_contact", this.props.language)}</p>
+                                    <input type="text" name="emergency_contact" />
+                                </label>
+                            </div>
+
                         </div>
                         <div className="step-3">
+
+                            <div className="form-group">
+                                <label>
+                                    <p>{Translator.translate("allergies", this.props.language)}</p>
+                                    <input type="text" name="allergies" />
+                                </label>
+                            </div>
+                            <div className="form-group">
+                                <label>
+                                    <p>{Translator.translate("treatments", this.props.language)}</p>
+                                    <input type="text" name="treatments" />
+                                </label>
+                            </div>
+                            <div className="form-group">
+                                <label>
+                                    <p>{Translator.translate("chronic_diseases", this.props.language)}</p>
+                                    <input type="text" name="chronic_diseases" />
+                                </label>
+                            </div>
+                            <div className="form-group">
+                                <label>
+                                    <p>{Translator.translate("surgical_history", this.props.language)}</p>
+                                    <input type="text" name="surgical_history" />
+                                </label>
+                            </div>
+                            <div className="form-group">
+                                <label>
+                                    <p>{Translator.translate("emergency", this.props.language)}</p>
+                                    <input type="text" name="emergency" />
+                                </label>
+                            </div>
 
                         </div>
                     </div>

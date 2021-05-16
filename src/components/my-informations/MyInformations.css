@@ -123,8 +123,8 @@ div.steps-container div.step-3 {
 }
 
 div.steps-container div.step-1 {left: 0; }
-div.steps-container div.step-2 {left: 33.33%; background-color: aqua;}
-div.steps-container div.step-3 {left: 66.66%; background-color: orange;}
+div.steps-container div.step-2 {left: 33.33%;}
+div.steps-container div.step-3 {left: 66.66%;}
 
 div.steps-container div.form-group {
     width: 100%;

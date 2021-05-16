@@ -34,7 +34,8 @@ export default class Translator {
             treatments: "Treatments",
             chronic_diseases: "Chronic Diseases",
             surgical_history: "Surgical History",
-            emergency: "Emergency"
+            emergency: "Emergency",
+
         },
         fr: {
             error: "ERREUR 404",
