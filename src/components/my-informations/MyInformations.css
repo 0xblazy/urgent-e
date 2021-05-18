@@ -26,13 +26,11 @@ div.MyInformations {
     height: 100%;
     min-height: 100%;
 
-    margin-top: 5.25em;
-    margin-bottom: 6.5em;
-
     background-color: #ffffff;
 }
 
 div.MyInformations div.title {
+    z-index: 100;
     position: fixed;
     top: 8em;
     width: 100%;
@@ -47,10 +45,7 @@ div.title h3 {
     margin: 0;
     padding: 0;
 
-    color: #5271ff;
-    font-family: Poppins, sans-serif;
-    font-weight: normal;
-    font-size: 1.5em;
+    font-size: 1em;
     text-align: center;
 
     transition: opacity 1s .5s ease;
@@ -66,6 +61,7 @@ div.title h3:before {
     z-index: -1;
     position: absolute;
     width: 100%;
+    height: 1em;
     top: 50%;
     left: 0%;
 
@@ -73,13 +69,21 @@ div.title h3:before {
     
     content: "";
 
+    background-color: #ffffff;
+
     border-top: 0.066em solid #d9d9d9;
+    box-shadow: 0 0 1em #fff, 0 0 0.9em #fff, 0 0 0.8em #fff, 0 0 0.7em #fff, 0 0 0.6em #fff, 0 0 0.5em #fff, 0 0 0.4em #fff, 0 0 0.3em #fff, 0 0 0.2em #fff, 0 0 0.1em #fff;
 }
 
 div.title h3 span {
     padding: 0 0.5em;
 
     background-color: #ffffff;
+    color: #5271ff;
+    font-family: Poppins, sans-serif;
+    font-weight: normal;
+    font-size: 1.5em;
+    text-align: center;
 }
 
 div.MyInformations form.stepper-container {
@@ -87,8 +91,7 @@ div.MyInformations form.stepper-container {
     width: 100%;
     height: 100%;
 
-    margin-top: 12em;
-    margin-bottom: 8em;
+    margin-top: 9.2em;
 
     overflow: hidden;
 
@@ -115,6 +118,8 @@ div.steps-container div.step-3 {
     width: 33.33%;
     height: 100%;
 
+    padding-top: 2em;
+
     overflow-y: auto;
 
     text-align: center;
@@ -133,11 +138,13 @@ div.steps-container div.form-group:first-child {
     margin-top: 0;
 }
 
-div.form-group label {
-    display: block;
+div.steps-container div.form-group:last-child {
+    margin-bottom: 8em;
 }
 
-div.form-group label p {
+div.form-group label {
+    display: block;
+
     margin: 0;
 
     color: #000000;
@@ -147,8 +154,8 @@ div.form-group label p {
     text-align: left;
 }
 
-div.form-group label input,
-div.form-group label textarea {
+div.form-group input,
+div.form-group textarea {
     width: 100%;
     box-sizing: border-box;
 
@@ -166,18 +173,18 @@ div.form-group label textarea {
     outline: none;
 }
 
-div.form-group label input:focus,
-div.form-group label textarea:focus {
+div.form-group input:focus,
+div.form-group textarea:focus {
     border-color: #b3bbff;
 }
 
-div.form-group label input {
+div.form-group input {
     padding: 0.3em 0.6em;
 
     border-radius: 1.25em;
 }
 
-div.form-group label textarea {
+div.form-group textarea {
     padding: 0.3em 0.8em;
 
     border-radius: 2em;
@@ -185,19 +192,26 @@ div.form-group label textarea {
     resize: none;
 }
 
-@media screen and (max-width: 450px) {
-    div.MyInformations {
-        margin-top: 4em;
-    }
+div.form-group div.error {
+    margin-top: 0.25em;
 
+    font-family: Poppins, sans-serif;
+    font-weight: normal;
+    font-size: 1em;
+    text-align: left;
+}
+
+@media screen and (max-width: 450px) {
     div.MyInformations div.title {
         top: 5em;
     }
 
     div.title h3 {
-        font-size: 1.25em;
-
         transition: opacity .8s .5s ease;
+    }
+
+    div.title h3 span {
+        font-size: 1.25em;
     }
 
     div.title h3:before {
@@ -205,8 +219,7 @@ div.form-group label textarea {
     }
 
     div.MyInformations form.stepper-container {
-        margin-top: 9em;
-        margin-bottom: 5.25em;
+        margin-top: 6em;
     }
 
     div.MyInformations div.steps-container {

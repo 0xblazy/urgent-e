@@ -34,6 +34,12 @@ export default class Translator {
             treatments: "Treatments",
             chronic_diseases: "Chronic Diseases",
             surgical_history: "Surgical History",
+            required_field: "Required field",
+            enter_age: "Enter an age",
+            enter_size: "Enter a size",
+            enter_weight: "Enter a weight",
+            enter_phone_number: "Enter a phone number",
+            enter_vital_card: "Enter a vital card code",
             emergency: "Emergency",
             go_to_emergency : "GO TO EMERGENCY",
             link_device : "LINK MY DEVICE",
@@ -77,9 +83,15 @@ export default class Translator {
             allergies: "Allergies",
             treatments: "Traitements",
             chronic_diseases: "Maladies Chroniques",
-            surgical_history: "Antécédents Chirurgicaux",   
+            surgical_history: "Antécédents Chirurgicaux",
+            required_field: "Champs requis",
+            enter_age: "Saisissez un âge",
+            enter_size: "Saisissez une taille",
+            enter_weight: "Saisissez un poids",
+            enter_phone_number: "Saisissez un numéro de téléphone",
+            enter_vital_card: "Saisissez un code de carte vitale",   
             emergency: "Urgences",
-            go_to_emergency : "ALLEZ AUX URGENCES",
+            go_to_emergency : "ALLER AUX URGENCES",
             link_device: "CONNECTER MON APPAREIL",
             blood_pressure : "TENSION",
             pulse : "POULS",
@@ -87,7 +99,6 @@ export default class Translator {
             respiratory_rate : "FRÉQUENCE RESPIRATOIRE",
             blood_sugar : "GLYCÉMIE",
             temperature : "TEMPÉRATURE"
-
         }
     }
 

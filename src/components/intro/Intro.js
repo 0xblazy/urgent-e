@@ -20,7 +20,7 @@ class Intro extends React.Component {
         this.props.onPathChange("/intro");
     }
 
-    on_step_change = (new_step) => {
+    onStepChange = (new_step) => {
         this.setState({
             step: new_step
         }, () => {
@@ -39,19 +39,19 @@ class Intro extends React.Component {
         });
     }
 
-    get_class_name = () => {
+    getClassName = () => {
         return this.state.step !== 0 ? "Intro small" : "Intro";
     }
 
     render() {
         return (
-            <div className={this.get_class_name()}>
+            <div className={this.getClassName()}>
 
                 <SwitchLanguageButton language={this.props.language} onLanguageChange={this.props.onLanguageChange} />
 
                 <SlideShow language={this.props.language} step={this.state.step} />
 
-                <NextPageButton language={this.props.language} path={this.props.path} step={this.state.step} onStepChange={(step) => this.on_step_change(step)} />
+                <NextPageButton language={this.props.language} path={this.props.path} step={this.state.step} onStepChange={(step) => this.onStepChange(step)} />
 
                 {
                     this.state.step === 0 &&

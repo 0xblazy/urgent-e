@@ -18,20 +18,39 @@ export default class App extends React.Component {
 
         this.state = {
             language: "fr",
-            path: "/"
+            path: "/",
+            user: null
         }
     }
 
-    on_language_change = (language) => {
+    componentDidMount() {
+        let user = localStorage["user"];
+        if (user) {
+            user = JSON.parse(user);
+            this.setState({
+                user: user
+            });
+        }
+    }
+
+    onLanguageChange = (language) => {
         this.setState({
             language: language
         });
     }
 
-    on_path_change = (path) => {
+    onPathChange = (path) => {
         this.setState({
             path: path
         });
+    }
+
+    onUserChange = (user) => {
+        this.setState({
+            user: user
+        });
+
+        localStorage["user"] = JSON.stringify(user, null, 2);
     }
 
     render() {
@@ -43,27 +62,29 @@ export default class App extends React.Component {
                     <Switch>
                         <Route path="/" exact render={
                             () => <Dashboard language={this.state.language}
-                            onPathChange={(path) => this.on_path_change(path)} />
+                            onPathChange={(path) => this.onPathChange(path)} />
                         } />
                         <Route path="/intro" exact render={
                             () => <Intro language={this.state.language}
                             path={this.state.path}
-                            onLanguageChange={(language) => this.on_language_change(language)}
-                            onPathChange={(path) => this.on_path_change(path)} />
+                            onLanguageChange={(language) => this.onLanguageChange(language)}
+                            onPathChange={(path) => this.onPathChange(path)} />
                         } /> 
                         <Route path="/confidentiality" exact render={
                             () => <Confidentiality language={this.state.language}
-                            onPathChange={(path) => this.on_path_change(path)} />
+                            onPathChange={(path) => this.onPathChange(path)} />
                         } />
                         <Route path="/my-informations" exact render={
                             () => <MyInformations language={this.state.language}
                             path={this.state.path}
-                            onLanguageChange={(language) => this.on_language_change(language)}
-                            onPathChange={(path) => this.on_path_change(path)} />
+                            user={this.state.user}
+                            onLanguageChange={(language) => this.onLanguageChange(language)}
+                            onPathChange={(path) => this.onPathChange(path)}
+                            onUserChange={(user) => this.onUserChange(user)} />
                         } /> 
                         <Route path="/emergency" exact render={
                             () => <Emergency language={this.state.language}
-                            onPathChange={(path) => this.on_path_change(path)} />
+                            onPathChange={(path) => this.onPathChange(path)} />
                         } />
                         <Route path="/" render={
                             ()=> <div>{Translator.translate("error", this.state.language)}</div>

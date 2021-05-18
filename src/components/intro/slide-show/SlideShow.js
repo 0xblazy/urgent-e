@@ -5,13 +5,13 @@ import Translator from '../../../utils/Translator';
 
 export default class SlideShow extends React.Component {
 
-    create_slider = () => {
+    createSlider = () => {
         let slider = [];
         
         for (let i = 1 ; i <= 4 ; i++) {
             slider.push(
                 <div className={"step-" + i} key={i}>
-                    <img src={this.slide_image(i)} alt={"Slide " + i} />
+                    <img src={this.slideImage(i)} alt={"Slide " + i} />
                 </div>
             )
         }
@@ -19,7 +19,7 @@ export default class SlideShow extends React.Component {
         return slider;
     }
 
-    slide_image = (step) => {
+    slideImage = (step) => {
         switch (step) {
             case 1:
                 return "./images/intro/medicine.svg";
@@ -34,11 +34,11 @@ export default class SlideShow extends React.Component {
         }
     }
 
-    get_slider_classname = () => {
+    getSliderClassname = () => {
         return "slider-container step-" + this.props.step;
     }
 
-    create_legend = () => {
+    createLegend = () => {
         let legend = [];
 
         for (let i = 1 ; i < 5 ; i++) {
@@ -50,7 +50,7 @@ export default class SlideShow extends React.Component {
         return legend;
     }
 
-    get_legend_classname = () => {
+    getLegendClassname = () => {
         return "legend step-" + this.props.step;
     }
 
@@ -65,12 +65,12 @@ export default class SlideShow extends React.Component {
                     this.props.step !== 0 &&
                     <>
                         <div className="slideshow-container">
-                            <div className={this.get_slider_classname()}>
-                                {this.create_slider()}
+                            <div className={this.getSliderClassname()}>
+                                {this.createSlider()}
                             </div>
                         </div>
-                        <div className={this.get_legend_classname()}>
-                            {this.create_legend()}
+                        <div className={this.getLegendClassname()}>
+                            {this.createLegend()}
                         </div>
                     </>
                 }

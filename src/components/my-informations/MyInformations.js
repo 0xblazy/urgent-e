@@ -1,5 +1,7 @@
 import React from 'react';
-import {withRouter} from 'react-router-dom'
+import {withRouter} from 'react-router-dom';
+import {Formik, Form, Field, ErrorMessage} from 'formik';
+import * as Yup from 'yup';
 import './MyInformations.css';
 
 import NextPageButton from '../next-page-button/NextPageButton';
@@ -13,34 +15,51 @@ class MyInformations extends React.Component {
         super(props);
 
         this.state = {
-            step: 1
+            step: 1,
+            locked_step: 0
         }
+
+        this.formRef = React.createRef();
+        this.inputs = {
+            1: ["name", "firstname", "age", "size", "weight"],
+            2: ["address", "phone_number", "vital_card", "mutual", "emergency_contact"],
+            3: ["allergies", "treatments", "chronic_diseases", "surgical_history"]
+        };
     }
 
     componentDidMount() {
         this.props.onPathChange("/my-informations");
     }
 
-    on_step_change = (new_step) => {
-        this.setState({
-            step: new_step
-        }, () => {
-            // Renvoi à l'accueil après avoir terminé de compléter les informations personnelles
-            if (this.state.step > 4) {
-                const {history} = this.props;
-
-                if (history) {
-                    history.push("/");
+    onStepChange = (new_step) => {
+        // Si on est pas à l'étape bloquée ou si on a cliqué sur le bouton ANNULER/TERMINER
+        if (this.state.locked_step === 0 || this.state.locked_step >= new_step || new_step > 4) {
+            // Soumission du formulaire
+            if (this.state.step === 3 && new_step > 4) {
+                if (this.formRef.current) {
+                    this.formRef.current.handleSubmit();
                 }
             }
-        });
+            this.setState({
+                step: new_step
+            }, () => {
+                // Renvoi à l'accueil après avoir terminé de compléter les informations personnelles
+                if (this.state.step > 4) {
+                    const {history} = this.props;
+    
+                    if (history) {
+                        history.push("/");
+                    }
+                }
+            });
+        }
     }
 
-    get_steps_classname = () => {
+    getStepsClassname = () => {
         return "steps-container step-" + this.state.step;
     }
 
-    create_title = () => {
+    createTitle = () => {
         let titles = [];
 
         for (let i = 1 ; i < 4 ; i++) {
@@ -52,8 +71,67 @@ class MyInformations extends React.Component {
         return titles;
     }
 
-    get_title_classname = () => {
+    getTitleClassname = () => {
         return "title step-" + this.state.step;
+    }
+
+    createSteps = () => {
+        let steps = [];
+
+        for (let i = 1 ; i < 4 ; i++) {
+            steps.push(
+                <div className={"step-" + i} key={i}>
+                    {this.createFields(i)}
+                </div>
+            );
+        }
+
+        return steps;
+    }
+
+    createFields = (step) => {
+        let fields = [];
+
+        for (let i = 0 ; i < this.inputs[step].length ; i++) {
+            fields.push(
+                <div className="form-group" key={i}>
+                    <label>{Translator.translate(this.inputs[step][i], this.props.language)}</label>
+                    <Field as={step === 3 ? "textarea" : ""} type="text" name={this.inputs[step][i]} />
+                    <ErrorMessage component="div" className="error" name={this.inputs[step][i]} />
+                </div>
+            )
+        }
+        
+        return fields;
+    }
+
+    handleBlur = (event) => {
+        if (event.target.name in this.formRef.current.errors) {
+            this.setState({
+                locked_step: this.state.step
+            });
+        } else {
+            let errors_key = Object.keys(this.formRef.current.errors);
+            let locked = false;
+
+            for (let i = 1 ; i < 4 ; i++) {
+                if (!locked && this.containsArray(this.inputs[i], errors_key)) {
+                    this.setState({
+                        locked_step: i
+                    });
+                    locked = true
+                }
+            }
+            if (!locked) {
+                this.setState({
+                    locked_step: 0
+                });
+            }
+        }
+    }
+
+    containsArray = (array, container) => {
+        return container.some(v => array.includes(v));
     }
 
     render() {
@@ -61,105 +139,73 @@ class MyInformations extends React.Component {
             <div className="MyInformations">
                 <SwitchLanguageButton language={this.props.language} onLanguageChange={this.props.onLanguageChange} />
 
-                <div className={this.get_title_classname()}>
-                    {this.create_title()}
+                <div className={this.getTitleClassname()}>
+                    {this.createTitle()}
                 </div>
+
+                <Formik
+                    initialValues={{ 
+                        name: this.props.user ? this.props.user.name : "",
+                        firstname: this.props.user ? this.props.user.firstname : "",
+                        age: this.props.user ? this.props.user.age : "",
+                        size: this.props.user ? this.props.user.size : "",
+                        weight: this.props.user ? this.props.user.weight : "",
+                        address: this.props.user ? this.props.user.address : "",
+                        phone_number: this.props.user ? this.props.user.phone_number : "",
+                        vital_card: this.props.user ? this.props.user.vital_card : "",
+                        mutual: this.props.user ? this.props.user.mutual : "",
+                        emergency_contact: this.props.user ? this.props.user.emergency_contact : "",
+                        allergies: this.props.user ? this.props.user.allergies : "",
+                        treatments: this.props.user ? this.props.user.treatments : "",
+                        chronic_diseases: this.props.user ? this.props.user.chronic_diseases : "",
+                        surgical_history: this.props.user ? this.props.user.surgical_history : ""
+                    }}
+                    validationSchema={
+                        Yup.object().shape({
+                        name: Yup.string()
+                            .required(Translator.translate("required_field", this.props.language)),
+                        firstname: Yup.string()
+                            .required(Translator.translate("required_field", this.props.language)),
+                        age: Yup.number().typeError(Translator.translate("enter_age", this.props.language))
+                            .positive(Translator.translate("enter_age", this.props.language))
+                            .integer(Translator.translate("enter_age", this.props.language))
+                            .required(Translator.translate("required_field", this.props.language)),
+                        size: Yup.number().typeError(Translator.translate("enter_size", this.props.language))
+                            .positive(Translator.translate("enter_size", this.props.language))
+                            .required(Translator.translate("required_field", this.props.language)),
+                        weight: Yup.number().typeError(Translator.translate("enter_weight", this.props.language))
+                            .positive(Translator.translate("enter_weight", this.props.language))
+                            .required(Translator.translate("required_field", this.props.language)),
+                        address: Yup.string()
+                            .required(Translator.translate("required_field", this.props.language)),
+                        phone_number: Yup.string()
+                            .matches(/^[0-9]{2}(.| )?[0-9]{2}(.| )?[0-9]{2}(.| )?[0-9]{2}(.| )?[0-9]{2}$/, Translator.translate("entre_phone_number", this.props.language))
+                            .required(Translator.translate("required_field", this.props.language)),
+                        vital_card: Yup.number().typeError(Translator.translate("enter_vital_card", this.props.language))
+                            .positive(Translator.translate("enter_vital_card", this.props.language))
+                            .integer(Translator.translate("enter_vital_card", this.props.language)),
+                        mutual: Yup.string(),
+                        emergency_contact: Yup.string()
+                            .matches(/^[0-9]{2}(.| )?[0-9]{2}(.| )?[0-9]{2}(.| )?[0-9]{2}(.| )?[0-9]{2}$/, Translator.translate("entre_phone_number", this.props.language)),
+                        allergies: Yup.string(),
+                        treatments: Yup.string(),
+                        chronic_diseases: Yup.string(),
+                        surgical_history: Yup.string()
+                    })}
+                    validateOnMount={true}
+                    innerRef={this.formRef}
+                    onSubmit={(user) => {
+                        this.props.onUserChange(user)
+                    }}
+                >
+                    <Form className="stepper-container" onBlur={(e) => this.handleBlur(e)}>
+                        <div className={this.getStepsClassname()}>
+                            {this.createSteps()}
+                        </div>
+                    </Form>
+                </Formik>
                 
-                <form className="stepper-container">
-                    <div className={this.get_steps_classname()}>
-                        <div className="step-1">
-                            <div className="form-group">
-                                <label>
-                                    <p>{Translator.translate("name", this.props.language)}</p>
-                                    <input type="text" name="name" />
-                                </label>
-                            </div>
-                            <div className="form-group">
-                                <label>
-                                    <p>{Translator.translate("firstname", this.props.language)}</p>
-                                    <input type="text" name="firstname" />
-                                </label>
-                            </div>
-                            <div className="form-group">
-                                <label>
-                                    <p>{Translator.translate("age", this.props.language)}</p>
-                                    <input type="text" name="age" />
-                                </label>
-                            </div>
-                            <div className="form-group">
-                                <label>
-                                    <p>{Translator.translate("size", this.props.language)}</p>
-                                    <input type="text" name="size" />
-                                </label>
-                            </div>
-                            <div className="form-group">
-                                <label>
-                                    <p>{Translator.translate("weight", this.props.language)}</p>
-                                    <input type="text" name="weight" />
-                                </label>
-                            </div>
-                        </div>
-                        <div className="step-2">
-                            <div className="form-group">
-                                <label>
-                                    <p>{Translator.translate("address", this.props.language)}</p>
-                                    <input type="text" name="address" />
-                                </label>
-                            </div>
-                            <div className="form-group">
-                                <label>
-                                    <p>{Translator.translate("phone_number", this.props.language)}</p>
-                                    <input type="text" name="phone_number" />
-                                </label>
-                            </div>
-                            <div className="form-group">
-                                <label>
-                                    <p>{Translator.translate("vital_card", this.props.language)}</p>
-                                    <input type="text" name="vital_card" />
-                                </label>
-                            </div>
-                            <div className="form-group">
-                                <label>
-                                    <p>{Translator.translate("mutual", this.props.language)}</p>
-                                    <input type="text" name="mutual" />
-                                </label>
-                            </div>
-                            <div className="form-group">
-                                <label>
-                                    <p>{Translator.translate("emergency_contact", this.props.language)}</p>
-                                    <input type="text" name="emergency_contact" />
-                                </label>
-                            </div>
-                        </div>
-                        <div className="step-3">
-                            <div className="form-group">
-                                <label>
-                                    <p>{Translator.translate("allergies", this.props.language)}</p>
-                                    <textarea name="allergies" rows="2"></textarea>
-                                </label>
-                            </div>
-                            <div className="form-group">
-                                <label>
-                                    <p>{Translator.translate("treatments", this.props.language)}</p>
-                                    <textarea name="treatments" rows="2"></textarea>
-                                </label>
-                            </div>
-                            <div className="form-group">
-                                <label>
-                                    <p>{Translator.translate("chronic_diseases", this.props.language)}</p>
-                                    <textarea name="chronic_diseases" rows="2"></textarea>
-                                </label>
-                            </div>
-                            <div className="form-group">
-                                <label>
-                                    <p>{Translator.translate("surgical_history", this.props.language)}</p>
-                                    <textarea name="surgical_history" rows="2"></textarea>
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-                </form>
-                <NextPageButton language={this.props.language} step={this.state.step} onStepChange={(step) => this.on_step_change(step)} />
+                <NextPageButton language={this.props.language} step={this.state.step} locked_step={this.state.locked_step} onStepChange={(step) => this.onStepChange(step)} />
             </div>
         );
     }
