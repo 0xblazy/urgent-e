@@ -4,6 +4,7 @@ import './App.css';
 
 import LogoContainer from './components/logo-container/LogoContainer';
 import Navigation from './components/navigation/Navigation';
+import EmergencyButton from './components/emergency-button/EmergencyButton';
 import Intro from './components/intro/Intro';
 import Dashboard from './components/dashboard/Dashboard';
 import Confidentiality from './components/confidentiality/Confidentiality';
@@ -58,6 +59,11 @@ export default class App extends React.Component {
             <div className="App">
                 <Router>
                     <LogoContainer path={this.state.path} />
+
+                    {
+                        (this.state.path === "/" || this.state.path === "/emergency") &&
+                        <EmergencyButton language={this.props.language}/>
+                    }
                     
                     <Switch>
                         <Route path="/" exact render={

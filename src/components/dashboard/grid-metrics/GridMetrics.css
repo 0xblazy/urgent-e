@@ -1,3 +1,13 @@
+@keyframes zoom {
+    from {
+        opacity: 0;
+        transform: scale(0);
+    } to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
 div.GridMetrics {
     display: grid;
     grid-gap: 2em;
@@ -11,7 +21,17 @@ div.GridMetrics {
 div.GridMetrics div.grid-item{
     width: 6em;
     height: 9em;
+
+    opacity: 0;
+    transform: scale(0);
 }
+
+div.GridMetrics div.grid-item:nth-child(1) {animation: zoom 1s 0s 1 ease forwards;}
+div.GridMetrics div.grid-item:nth-child(2) {animation: zoom 1s .1s 1 ease forwards;}
+div.GridMetrics div.grid-item:nth-child(3) {animation: zoom 1s .2s 1 ease forwards;}
+div.GridMetrics div.grid-item:nth-child(4) {animation: zoom 1s .3s 1 ease forwards;}
+div.GridMetrics div.grid-item:nth-child(5) {animation: zoom 1s .4s 1 ease forwards;}
+div.GridMetrics div.grid-item:nth-child(6) {animation: zoom 1s .5s 1 ease forwards;}
 
 div.grid-item div.metric-frame{
     z-index: 0;

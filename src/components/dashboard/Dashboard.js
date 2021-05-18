@@ -2,9 +2,8 @@ import React from 'react';
 import {withRouter} from 'react-router-dom';
 import './Dashboard.css';
 
-import EmergencyButton from "../emergency-button/EmergencyButton";
-import GridMetrics from "./grid-metrics/GridMetrics";
-import LinkDeviceButton from "./link-device-button/LinkDeviceButton";
+import GridMetrics from './grid-metrics/GridMetrics';
+import LinkDeviceButton from './link-device-button/LinkDeviceButton';
 
 class Dashboard extends React.Component {
 
@@ -23,7 +22,6 @@ class Dashboard extends React.Component {
     render() {
         return (
             <div className="Dashboard">
-                <EmergencyButton language={this.props.language}/>
                 <LinkDeviceButton language={this.props.language} user={this.props.user}/>
                 <GridMetrics language={this.props.language}/>
             </div>
