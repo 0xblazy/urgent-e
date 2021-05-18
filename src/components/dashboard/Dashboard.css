@@ -1,11 +1,22 @@
-.title_dashboard h3 {
-    transition: opacity .8s .5s ease;
-    font-family: Poppins, sans-serif;
-    color: #5071fb;
-    font-weight: normal;
-    font-size: 1.25em;
-    text-align: center;
+div.Dashboard {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+
+    margin-top: 13.6em;
+    margin-bottom: 6.1em;
+
+    background-color: #ffffff;
+
+    border-top: 0.066em solid #d9d9d9;
 }
 
-
-
+@media screen and (max-width: 450px) {
+    div.Dashboard {
+        margin-top: 10.6em;
+    }
+}

@@ -1,39 +1,63 @@
 div.EmergencyButton {
+    position: fixed;
+    top: 8em;
     display: flex;
     justify-content: center;
 }
 
-div.EmergencyButton button {
+div.EmergencyButton a {
+    z-index: 0;
+    box-sizing: border-box;
+    overflow: hidden;
+    position: relative;
+
+    margin: 0;
     padding: 0.5em;
+    
     background-color: #ffffff;
-    color: #FF7177;
+    color: #ff7177;
     font-family: Poppins, sans-serif;
-    font-weight: 700;
+    font-weight: 600;
+    text-decoration: none;
     font-size: 1.6em;
     text-align: center;
+
     border-radius: 3em;
-    border: 0.25em solid #FF7177;
-    overflow: hidden;
-    z-index: 0;
-    position: relative;
-    margin-right: 0px;
+    border: 0.2em solid #ff7177;
+
+    transition: color .5s ease, border-color .5s ease;
 }
 
-div.EmergencyButton button::before {
-    content: '';
-    position: absolute;
-    top: 2.5em;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    color: #ffffff;
-    background-color: #CC3030;
-    border-radius: 50% 50% 0 0;
-    transition: all .5s;
+div.EmergencyButton a::before {
     z-index: -1;
+    position: absolute;
+    top: 2.6em;
+    left: -0.5em;
+    width: 110%;
+    height: 100%;
+
+    content: '';
+
+    background-color: #ff7177;
+
+    border-radius: 50%;
+
+    transition: all .5s ease;
 }
 
-div.EmergencyButton button:hover::before {
+div.EmergencyButton a:hover {
+    color: #cc3030;
+    border-color: #cc3030;
+}
+
+div.EmergencyButton a:hover::before {
     top: 0;
+
     border-radius: 0;
+}
+
+@media screen and (max-width: 450px) {
+    div.EmergencyButton {
+        top: 5em;
+    }
 }

@@ -1,7 +1,8 @@
 import React from 'react';
-import './Navigation.css';
-import Translator from '../../utils/Translator'; 
 import {Link} from 'react-router-dom';
+import './Navigation.css';
+
+import Translator from '../../utils/Translator'; 
 
 export default class Navigation extends React.Component {
 

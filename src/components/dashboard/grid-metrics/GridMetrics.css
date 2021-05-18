@@ -1,0 +1,65 @@
+div.GridMetrics {
+    display: grid;
+    grid-gap: 2em;
+    grid-template-columns: repeat(3,6em);
+    justify-content: center;
+    width: 100%;
+
+    margin-top: 4em;
+}
+
+div.GridMetrics div.grid-item{
+    width: 6em;
+    height: 9em;
+}
+
+div.grid-item div.metric-frame{
+    z-index: 0;
+    position: relative;
+    width: 5.75em;
+    height: 5.75em;
+    overflow: hidden;
+
+    background-color: #9AACFF;
+
+    border-radius: 50%;
+    border: 2px solid #536DFE;
+}
+
+div.metric-frame div.metric-value {
+    padding-top : 25%;
+
+    color: #5071fb;
+    font-family: Poppins, sans-serif;
+    font-size: 2em;
+    font-weight: 700;
+    text-align: center;
+}
+
+div.metric-frame div.metric-value::before {
+    z-index: -1;
+    position: absolute;
+    top: 8%;
+    left: 8%;
+    width: 80%;
+    height: 80%;
+    
+    content: '';
+
+    background-color: #F5FDFF;
+    
+    border-radius: 50%;
+    border: 2px solid #536DFE;
+}
+
+div.grid-item div.metric-name{
+    height: 2em;
+    
+    margin-top: 1em;
+    
+    color: #5071fb;
+    font-family: Poppins, sans-serif;
+    font-size: 0.8em;
+    font-weight: 600;
+    text-align: center;
+}

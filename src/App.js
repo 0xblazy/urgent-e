@@ -62,6 +62,7 @@ export default class App extends React.Component {
                     <Switch>
                         <Route path="/" exact render={
                             () => <Dashboard language={this.state.language}
+                            user={this.state.user}
                             onPathChange={(path) => this.onPathChange(path)} />
                         } />
                         <Route path="/intro" exact render={
