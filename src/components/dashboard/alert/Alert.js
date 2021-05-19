@@ -15,7 +15,8 @@ export default class Alert extends React.Component {
         return (
             <div className="Alert">
                 <img src="images/dashboard/warning.svg" alt="Warning" />
-                <p>{Translator.translate("alert", this.props.language)}</p>
+                <p>{Translator.translate("alert_1", this.props.language)}</p>
+                <p>{Translator.translate("alert_2", this.props.language)}</p>
             </div>
         );
     }

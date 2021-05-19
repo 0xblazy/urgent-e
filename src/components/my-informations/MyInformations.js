@@ -55,7 +55,7 @@ class MyInformations extends React.Component {
         }
     }
 
-    getStepsClassname = () => {
+    getStepsContainerClassname = () => {
         return "steps-container step-" + this.state.step;
     }
 
@@ -211,7 +211,7 @@ class MyInformations extends React.Component {
                     }}
                 >
                     <Form className="stepper-container" onBlur={(e) => this.handleBlur(e)}>
-                        <div className={this.getStepsClassname()}>
+                        <div className={this.getStepsContainerClassname()}>
                             {this.createSteps()}
                         </div>
                     </Form>
