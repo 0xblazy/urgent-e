@@ -9,7 +9,7 @@
 
     cursor: pointer;
 
-    background-color: #5271ff;
+    background-color: #536DFE;
     color: #ffffff;
     font-family: Poppins, sans-serif;
     font-weight: bold;
@@ -19,7 +19,7 @@
 }
 
 .SwitchLanguageButton:hover {
-    background-color: #5271ff;
+    background-color: #536DFE;
     color: #ffffff;
 }
 
@@ -32,7 +32,7 @@
 }
 
 .SwitchLanguageButton span.active {
-    color: #b3bbff;
+    color: #9AACFF;
     font-weight: bold;
     font-size: 1.2em;
 }

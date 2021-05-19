@@ -59,7 +59,6 @@ export default class App extends React.Component {
             <div className="App">
                 <Router>
                     <LogoContainer path={this.state.path} />
-
                     {
                         (this.state.path === "/" || this.state.path === "/emergency") &&
                         <EmergencyButton language={this.props.language}/>

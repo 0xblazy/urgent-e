@@ -16,6 +16,20 @@
     }
 }
 
+@keyframes shake {
+    0% { transform: translate(1px, 1px) rotate(0deg); }
+    10% { transform: translate(-1px, -2px) rotate(-1deg); }
+    20% { transform: translate(-3px, 0px) rotate(1deg); }
+    30% { transform: translate(3px, 2px) rotate(0deg); }
+    40% { transform: translate(1px, -1px) rotate(1deg); }
+    50% { transform: translate(-1px, 2px) rotate(-1deg); }
+    60% { transform: translate(-3px, 1px) rotate(0deg); }
+    70% { transform: translate(3px, 1px) rotate(-1deg); }
+    80% { transform: translate(-1px, -1px) rotate(1deg); }
+    90% { transform: translate(1px, 2px) rotate(0deg); }
+    100% { transform: translate(1px, -2px) rotate(-1deg); }
+}
+
 div.MyInformations {
     display: flex;
     flex-direction: column;
@@ -24,15 +38,17 @@ div.MyInformations {
     align-items: center;
     width: 100%;
     height: 100%;
-    min-height: 100%;
+    min-height: calc(100% - 6.3125em);
+
+    margin-top: 6.3125em;
 
     background-color: #ffffff;
 }
 
 div.MyInformations div.title {
     z-index: 100;
-    position: fixed;
-    top: 8em;
+    position: relative;
+    top: 0;
     width: 100%;
 }
 
@@ -91,7 +107,7 @@ div.MyInformations form.stepper-container {
     width: 100%;
     height: 100%;
 
-    margin-top: 9.2em;
+    margin-top: 1.1em;
 
     overflow: hidden;
 
@@ -139,7 +155,7 @@ div.steps-container div.form-group:first-child {
 }
 
 div.steps-container div.form-group:last-child {
-    margin-bottom: 8em;
+    margin-bottom: 9em;
 }
 
 div.form-group label {
@@ -171,11 +187,29 @@ div.form-group textarea {
 
     border: 0.15em solid #5271ff;
     outline: none;
+
+    transition: border-color .5s ease, background-color .5s ease;
 }
 
-div.form-group input:focus,
-div.form-group textarea:focus {
+div.form-group input.error,
+div.form-group textarea.error {
+    background-color: #ff7177;
+
+    border-color: #cc3030;
+
+    animation: shake .5s 1 ease;
+}
+
+div.form-group input:focus:not(.error),
+div.form-group textarea:focus:not(.error) {
     border-color: #b3bbff;
+}
+
+div.form-group input.error:focus,
+div.form-group textarea.error:focus {
+    background-color: #ffffff;
+
+    border-color: #ff7177;
 }
 
 div.form-group input {
@@ -195,17 +229,20 @@ div.form-group textarea {
 div.form-group div.error {
     margin-top: 0.25em;
 
+    color: #cc3030;
     font-family: Poppins, sans-serif;
-    font-weight: normal;
+    font-weight: 500;
     font-size: 1em;
     text-align: left;
 }
 
 @media screen and (max-width: 450px) {
-    div.MyInformations div.title {
-        top: 5em;
-    }
+    div.MyInformations {
+        min-height: calc(100% - 4.6875em);
 
+        margin-top: 4.6875em;
+    }
+    
     div.title h3 {
         transition: opacity .8s .5s ease;
     }
@@ -219,7 +256,7 @@ div.form-group div.error {
     }
 
     div.MyInformations form.stepper-container {
-        margin-top: 6em;
+        margin-top: 1em;
     }
 
     div.MyInformations div.steps-container {

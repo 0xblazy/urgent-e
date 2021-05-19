@@ -18,19 +18,13 @@ div.Intro footer {
 }
 
 div.Intro footer div {
-    /* display: none; */
     padding: 0 1em;
 
-    color: #5271ff;
+    color: #536DFE;
     font-family: Poppins, sans-serif;
     font-weight: 500;
     font-size: 1em;
     text-align: center;
-}
-
-div.Intro.small {
-    height: 100%;
-    min-height: 100%;
 }
 
 @media screen and (max-width: 450px) {

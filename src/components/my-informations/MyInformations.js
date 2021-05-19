@@ -96,13 +96,25 @@ class MyInformations extends React.Component {
             fields.push(
                 <div className="form-group" key={i}>
                     <label>{Translator.translate(this.inputs[step][i], this.props.language)}</label>
-                    <Field as={step === 3 ? "textarea" : ""} type="text" name={this.inputs[step][i]} />
+                    <Field 
+                        as={step === 3 ? "textarea" : ""} 
+                        type="text"
+                        name={this.inputs[step][i]}
+                        className={this.getInputErrorClass(this.inputs[step][i])} />
                     <ErrorMessage component="div" className="error" name={this.inputs[step][i]} />
                 </div>
             )
         }
         
         return fields;
+    }
+
+    getInputErrorClass = (fieldName) => {
+        if (this.formRef.current) {
+            return fieldName in this.formRef.current.errors ? "error" : "";
+        } else {
+            return "";
+        }
     }
 
     handleBlur = (event) => {

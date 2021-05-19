@@ -7,6 +7,7 @@
 }
 
 div.Dashboard {
+    position: relative;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -14,19 +15,35 @@ div.Dashboard {
     align-items: center;
     width: 100%;
     height: 100%;
+    min-height: calc(100% - 12em - 6.1em);
 
-    margin-top: 13.6em;
+    margin-top: 12em;
     margin-bottom: 6.1em;
+
+    overflow-y: auto;
 
     background-color: #ffffff;
 
     border-top: 0.066em solid #d9d9d9;
 
+    transition: background-color .5s ease;
     animation: appearance .5s 1 ease;
+}
+
+div.Dashboard.alert {
+    background-color: #FDD9D9;
+}
+
+div.Dashboard div.info {
+    width: 100%;
+
+    margin: 1em 0;
 }
 
 @media screen and (max-width: 450px) {
     div.Dashboard {
-        margin-top: 10.6em;
+        min-height: calc(100% - 10.375em - 6.1em);
+        
+        margin-top: 10.375em;
     }
 }
