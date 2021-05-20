@@ -97,7 +97,7 @@ class Emergency extends React.Component {
             }
             if (!locked) {
                 this.setState({
-                    locked_step: 0
+                    locked_step: 2
                 });
             }
         }

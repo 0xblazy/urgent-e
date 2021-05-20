@@ -1,3 +1,13 @@
+@keyframes slide-down {
+    from {
+        opacity: 0;
+        transform: translateY(-100%);
+    } to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 button.SwitchLanguageButton {
     z-index: 100;
     position: fixed;
@@ -16,6 +26,8 @@ button.SwitchLanguageButton {
 
     border:none;
     border-radius: 1em;
+
+    animation: slide-down .5s 1 ease;
 }
 
 button.SwitchLanguageButton:hover {
