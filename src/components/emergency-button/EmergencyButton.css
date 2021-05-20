@@ -9,6 +9,7 @@
 }
 
 div.EmergencyButton {
+    z-index: 100;
     position: absolute;
     top: 6.3125em;
     display: flex;
@@ -57,12 +58,14 @@ div.EmergencyButton a::before {
     transition: all .5s ease;
 }
 
-div.EmergencyButton a:hover {
+div.EmergencyButton a:hover,
+div.EmergencyButton.emergency a {
     color: #cc3030;
     border-color: #cc3030;
 }
 
-div.EmergencyButton a:hover::before {
+div.EmergencyButton a:hover::before,
+div.EmergencyButton.emergency a::before {
     top: 0;
 
     border-radius: 0;

@@ -16,13 +16,13 @@ class MyInformations extends React.Component {
 
         this.state = {
             step: 1,
-            locked_step: 0
+            locked_step: this.props.user ? 0 : 1
         }
 
         this.formRef = React.createRef();
         this.inputs = {
             1: ["name", "firstname", "age", "size", "weight"],
-            2: ["address", "phone_number", "vital_card", "mutual", "emergency_contact"],
+            2: ["address", "phone_number", "social_security", "mutual", "emergency_contact"],
             3: ["allergies", "treatments", "chronic_diseases", "surgical_history"]
         };
     }
@@ -174,36 +174,37 @@ class MyInformations extends React.Component {
                     }}
                     validationSchema={
                         Yup.object().shape({
-                        name: Yup.string()
-                            .required(Translator.translate("required_field", this.props.language)),
-                        firstname: Yup.string()
-                            .required(Translator.translate("required_field", this.props.language)),
-                        age: Yup.number().typeError(Translator.translate("enter_age", this.props.language))
-                            .positive(Translator.translate("enter_age", this.props.language))
-                            .integer(Translator.translate("enter_age", this.props.language))
-                            .required(Translator.translate("required_field", this.props.language)),
-                        size: Yup.number().typeError(Translator.translate("enter_size", this.props.language))
-                            .positive(Translator.translate("enter_size", this.props.language))
-                            .required(Translator.translate("required_field", this.props.language)),
-                        weight: Yup.number().typeError(Translator.translate("enter_weight", this.props.language))
-                            .positive(Translator.translate("enter_weight", this.props.language))
-                            .required(Translator.translate("required_field", this.props.language)),
-                        address: Yup.string()
-                            .required(Translator.translate("required_field", this.props.language)),
-                        phone_number: Yup.string()
-                            .matches(/^[0-9]{2}(.| )?[0-9]{2}(.| )?[0-9]{2}(.| )?[0-9]{2}(.| )?[0-9]{2}$/, Translator.translate("entre_phone_number", this.props.language))
-                            .required(Translator.translate("required_field", this.props.language)),
-                        vital_card: Yup.number().typeError(Translator.translate("enter_vital_card", this.props.language))
-                            .positive(Translator.translate("enter_vital_card", this.props.language))
-                            .integer(Translator.translate("enter_vital_card", this.props.language)),
-                        mutual: Yup.string(),
-                        emergency_contact: Yup.string()
-                            .matches(/^[0-9]{2}(.| )?[0-9]{2}(.| )?[0-9]{2}(.| )?[0-9]{2}(.| )?[0-9]{2}$/, Translator.translate("entre_phone_number", this.props.language)),
-                        allergies: Yup.string(),
-                        treatments: Yup.string(),
-                        chronic_diseases: Yup.string(),
-                        surgical_history: Yup.string()
-                    })}
+                            name: Yup.string()
+                                .required(Translator.translate("required_field", this.props.language)),
+                            firstname: Yup.string()
+                                .required(Translator.translate("required_field", this.props.language)),
+                            age: Yup.number().typeError(Translator.translate("enter_age", this.props.language))
+                                .positive(Translator.translate("enter_age", this.props.language))
+                                .integer(Translator.translate("enter_age", this.props.language))
+                                .required(Translator.translate("required_field", this.props.language)),
+                            size: Yup.number().typeError(Translator.translate("enter_size", this.props.language))
+                                .positive(Translator.translate("enter_size", this.props.language))
+                                .required(Translator.translate("required_field", this.props.language)),
+                            weight: Yup.number().typeError(Translator.translate("enter_weight", this.props.language))
+                                .positive(Translator.translate("enter_weight", this.props.language))
+                                .required(Translator.translate("required_field", this.props.language)),
+                            address: Yup.string()
+                                .required(Translator.translate("required_field", this.props.language)),
+                            phone_number: Yup.string()
+                                .matches(/^[0-9]{2}(.| )?[0-9]{2}(.| )?[0-9]{2}(.| )?[0-9]{2}(.| )?[0-9]{2}$/, Translator.translate("entre_phone_number", this.props.language))
+                                .required(Translator.translate("required_field", this.props.language)),
+                            social_security: Yup.number().typeError(Translator.translate("enter_social_security", this.props.language))
+                                .positive(Translator.translate("enter_social_security", this.props.language))
+                                .integer(Translator.translate("enter_social_security", this.props.language)),
+                            mutual: Yup.string(),
+                            emergency_contact: Yup.string()
+                                .matches(/^[0-9]{2}(.| )?[0-9]{2}(.| )?[0-9]{2}(.| )?[0-9]{2}(.| )?[0-9]{2}$/, Translator.translate("entre_phone_number", this.props.language)),
+                            allergies: Yup.string(),
+                            treatments: Yup.string(),
+                            chronic_diseases: Yup.string(),
+                            surgical_history: Yup.string()
+                        }
+                    )}
                     validateOnMount={true}
                     innerRef={this.formRef}
                     onSubmit={(user) => {

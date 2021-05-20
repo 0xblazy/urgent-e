@@ -61,7 +61,7 @@ export default class App extends React.Component {
                     <LogoContainer path={this.state.path} />
                     {
                         (this.state.path === "/" || this.state.path === "/emergency") &&
-                        <EmergencyButton language={this.props.language}/>
+                        <EmergencyButton language={this.state.language} path={this.state.path} />
                     }
                     
                     <Switch>
@@ -82,7 +82,6 @@ export default class App extends React.Component {
                         } />
                         <Route path="/my-informations" exact render={
                             () => <MyInformations language={this.state.language}
-                            path={this.state.path}
                             user={this.state.user}
                             onLanguageChange={(language) => this.onLanguageChange(language)}
                             onPathChange={(path) => this.onPathChange(path)}
@@ -90,6 +89,8 @@ export default class App extends React.Component {
                         } /> 
                         <Route path="/emergency" exact render={
                             () => <Emergency language={this.state.language}
+                            user={this.state.user}
+                            onLanguageChange={(language) => this.onLanguageChange(language)}
                             onPathChange={(path) => this.onPathChange(path)} />
                         } />
                         <Route path="/" render={

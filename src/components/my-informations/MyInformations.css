@@ -52,7 +52,7 @@ div.MyInformations div.title {
     width: 100%;
 }
 
-div.title h3 {
+div.MyInformations div.title h3 {
     position: absolute;
     top: 0;
     opacity: 1;
@@ -67,13 +67,13 @@ div.title h3 {
     transition: opacity 1s .5s ease;
 }
 
-div.title h3#step-1 { animation: slide-down .5s 1 ease; }
+div.MyInformations div.title h3#step-1 { animation: slide-down .5s 1 ease; }
 
-div.title.step-1 h3:not(#step-1) { opacity: 0; transition: opacity .5s ease; }
-div.title.step-2 h3:not(#step-2) { opacity: 0; transition: opacity .5s ease; }
-div.title.step-3 h3:not(#step-3) { opacity: 0; transition: opacity .5s ease; }
+div.MyInformations div.title.step-1 h3:not(#step-1) { opacity: 0; transition: opacity .5s ease; }
+div.MyInformations div.title.step-2 h3:not(#step-2) { opacity: 0; transition: opacity .5s ease; }
+div.MyInformations div.title.step-3 h3:not(#step-3) { opacity: 0; transition: opacity .5s ease; }
 
-div.title h3:before {
+div.MyInformations div.title h3:before {
     z-index: -1;
     position: absolute;
     width: 100%;
@@ -91,7 +91,7 @@ div.title h3:before {
     box-shadow: 0 0 1em #fff, 0 0 0.9em #fff, 0 0 0.8em #fff, 0 0 0.7em #fff, 0 0 0.6em #fff, 0 0 0.5em #fff, 0 0 0.4em #fff, 0 0 0.3em #fff, 0 0 0.2em #fff, 0 0 0.1em #fff;
 }
 
-div.title h3 span {
+div.MyInformations div.title h3 span {
     padding: 0 0.5em;
 
     background-color: #ffffff;
@@ -127,9 +127,9 @@ div.MyInformations div.steps-container.step-1 {left: 0;}
 div.MyInformations div.steps-container.step-2 {left: -100%;}
 div.MyInformations div.steps-container.step-3 {left: -200%;}
 
-div.steps-container div.step-1,
-div.steps-container div.step-2,
-div.steps-container div.step-3 {
+div.MyInformations div.steps-container div.step-1,
+div.MyInformations div.steps-container div.step-2,
+div.MyInformations div.steps-container div.step-3 {
     position: absolute;
     width: 33.33%;
     height: 100%;
@@ -141,24 +141,24 @@ div.steps-container div.step-3 {
     text-align: center;
 }
 
-div.steps-container div.step-1 {left: 0;}
-div.steps-container div.step-2 {left: 33.33%;}
-div.steps-container div.step-3 {left: 66.66%;}
+div.MyInformations div.steps-container div.step-1 {left: 0;}
+div.MyInformations div.steps-container div.step-2 {left: 33.33%;}
+div.MyInformations div.steps-container div.step-3 {left: 66.66%;}
 
-div.steps-container div.form-group {
+div.MyInformations div.steps-container div.form-group {
     margin: 0 1.5em;
     margin-top: 1.5em;
 }
 
-div.steps-container div.form-group:first-child {
+div.MyInformations div.steps-container div.form-group:first-child {
     margin-top: 0;
 }
 
-div.steps-container div.form-group:last-child {
+div.MyInformations div.steps-container div.form-group:last-child {
     margin-bottom: 9em;
 }
 
-div.form-group label {
+div.MyInformations div.form-group label {
     display: block;
 
     margin: 0;
@@ -170,8 +170,8 @@ div.form-group label {
     text-align: left;
 }
 
-div.form-group input,
-div.form-group textarea {
+div.MyInformations div.form-group input,
+div.MyInformations div.form-group textarea {
     width: 100%;
     box-sizing: border-box;
 
@@ -191,8 +191,8 @@ div.form-group textarea {
     transition: border-color .5s ease, background-color .5s ease;
 }
 
-div.form-group input.error,
-div.form-group textarea.error {
+div.MyInformations div.form-group input.error,
+div.MyInformations div.form-group textarea.error {
     background-color: #ff7177;
 
     border-color: #cc3030;
@@ -200,25 +200,31 @@ div.form-group textarea.error {
     animation: shake .5s 1 ease;
 }
 
-div.form-group input:focus:not(.error),
-div.form-group textarea:focus:not(.error) {
+div.MyInformations div.form-group input:hover:not(.error),
+div.MyInformations div.form-group input:focus:not(.error),
+div.MyInformations div.form-group textarea:hover:not(.error),
+div.MyInformations div.form-group textarea:focus:not(.error) {
     border-color: #b3bbff;
 }
 
-div.form-group input.error:focus,
-div.form-group textarea.error:focus {
+div.MyInformations div.form-group input.error:focus,
+div.MyInformations div.form-group input.error:hover,
+div.MyInformations div.form-group textarea.error:hover,
+div.MyInformations div.form-group textarea.error:focus {
     background-color: #ffffff;
 
     border-color: #ff7177;
 }
 
-div.form-group input {
+div.MyInformations div.form-group input {
     padding: 0.3em 0.6em;
 
     border-radius: 1.25em;
 }
 
-div.form-group textarea {
+div.MyInformations div.form-group textarea {
+    height: 4em;
+
     padding: 0.3em 0.8em;
 
     border-radius: 2em;
@@ -226,7 +232,7 @@ div.form-group textarea {
     resize: none;
 }
 
-div.form-group div.error {
+div.MyInformations div.form-group div.error {
     margin-top: 0.25em;
 
     color: #cc3030;
@@ -243,15 +249,15 @@ div.form-group div.error {
         margin-top: 4.6875em;
     }
     
-    div.title h3 {
+    div.MyInformations div.title h3 {
         transition: opacity .8s .5s ease;
     }
 
-    div.title h3 span {
+    div.MyInformations div.title h3 span {
         font-size: 1.25em;
     }
 
-    div.title h3:before {
+    div.MyInformations div.title h3:before {
         border-top-width: 0.08em;
     }
 

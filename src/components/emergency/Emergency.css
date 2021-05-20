@@ -1,0 +1,324 @@
+@keyframes appearance {
+    from {
+        opacity: 0;
+    } to {
+        opacity: 1;
+    }
+}
+
+@keyframes shake {
+    0% { transform: translate(1px, 1px) rotate(0deg); }
+    10% { transform: translate(-1px, -2px) rotate(-1deg); }
+    20% { transform: translate(-3px, 0px) rotate(1deg); }
+    30% { transform: translate(3px, 2px) rotate(0deg); }
+    40% { transform: translate(1px, -1px) rotate(1deg); }
+    50% { transform: translate(-1px, 2px) rotate(-1deg); }
+    60% { transform: translate(-3px, 1px) rotate(0deg); }
+    70% { transform: translate(3px, 1px) rotate(-1deg); }
+    80% { transform: translate(-1px, -1px) rotate(1deg); }
+    90% { transform: translate(1px, 2px) rotate(0deg); }
+    100% { transform: translate(1px, -2px) rotate(-1deg); }
+}
+
+div.Emergency {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    min-height: calc(100% - 11em);
+
+    margin-top: 11em;
+
+    background-color: #ffffff;
+}
+
+div.Emergency div.shadow {
+    z-index: 50;
+    width: 100%;
+    height: 1em;
+
+    box-shadow: 0 0 1em #fff, 0 0 0.9em #fff, 0 0 0.8em #fff, 0 0 0.7em #fff, 0 0 0.6em #fff, 0 0 0.5em #fff, 0 0 0.4em #fff, 0 0 0.3em #fff, 0 0 0.2em #fff, 0 0 0.1em #fff;
+}
+
+div.Emergency form.stepper-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+
+    overflow: hidden;
+
+    animation: appearance 1s 1 ease;
+}
+
+div.Emergency div.steps-container {
+    position: absolute;
+    left: 0;
+    width: 300%;
+    height: 100%;
+
+    transition: left 1s ease;
+}
+
+div.Emergency div.steps-container.step-1 {left: 0;}
+div.Emergency div.steps-container.step-2 {left: -100%;}
+div.Emergency div.steps-container.step-3 {left: -200%;}
+
+div.Emergency div.steps-container div.step-1,
+div.Emergency div.steps-container div.step-2,
+div.Emergency div.steps-container div.step-3 {
+    position: absolute;
+    width: 33.33%;
+    height: 100%;
+
+    overflow-y: auto;
+
+    text-align: center;
+}
+
+div.Emergency div.steps-container div.step-1 {left: 0;}
+div.Emergency div.steps-container div.step-2 {left: 33.33%;}
+div.Emergency div.steps-container div.step-3 {left: 66.66%;}
+
+div.Emergency div.steps-container div.form-group {
+    margin: 0 1.5em;
+    margin-top: 1.5em;
+}
+
+div.Emergency div.steps-container div.form-group:first-child {
+    margin-top: 1em;
+}
+
+div.Emergency div.steps-container div.form-group:last-child {
+    margin-bottom: 7em;
+}
+
+div.Emergency div.form-group label:not(.upload) {
+    display: block;
+
+    margin: 0;
+
+    color: #000000;
+    font-family: Poppins, sans-serif;
+    font-weight: normal;
+    font-size: 1.125em;
+    text-align: left;
+}
+
+div.Emergency div.form-group input,
+div.Emergency div.form-group textarea {
+    width: 100%;
+    box-sizing: border-box;
+
+    margin: 0;
+    margin-top: 0.8em;
+
+    background-color: #ffffff;
+    color: #444444;
+    font-family: Poppins, sans-serif;
+    font-weight: normal;
+    font-size: 1em;
+    text-align: left;
+
+    border: 0.15em solid #5271ff;
+    outline: none;
+
+    transition: border-color .5s ease, background-color .5s ease;
+}
+
+div.Emergency div.form-group input[type=range] {
+    height: 2.4875em;
+
+    overflow: hidden;
+    
+    padding: 0;
+}
+
+div.Emergency div.form-group input[type=range]::-webkit-slider-runnable-track {
+    height: 2.4875em;
+
+    background: linear-gradient(to right, #00ff00, #ffff00, #ffaa00, #ff0000);
+}
+div.Emergency div.form-group input[type=range]::-moz-range-track {
+    height: 2.4875em;
+
+    background: linear-gradient(to right, #00ff00, #ffff00, #ffaa00, #ff0000);
+}
+div.Emergency div.form-group input[type=range]::-ms-track {
+    height: 2.4875em;
+
+    background: linear-gradient(to right, #00ff00, #ffff00, #ffaa00, #ff0000);
+}
+
+div.Emergency div.form-group input[type=range]::-webkit-slider-thumb {
+    position: relative;
+    width: 0.8em;
+    height: 2.4875em;
+    cursor: pointer;
+
+    background-color: #9AACFF;
+
+    border-radius: 0;
+    border: 0.01em solid #707070;
+}
+div.Emergency div.form-group input[type=range]::-moz-range-thumb {
+    position: relative;
+    width: 0.8em;
+    height: 2.4875em;
+    cursor: pointer;
+
+    background-color: #9AACFF;
+
+    border-radius: 0;
+    border: 0.01em solid #707070;
+}
+div.Emergency div.form-group input[type=range]::-ms-thumb {
+    position: relative;
+    width: 0.8em;
+    height: 2.4875em;
+    cursor: pointer;
+
+    background-color: #9AACFF;
+
+    border-radius: 0;
+    border: 0.01em solid #707070;
+}
+
+div.Emergency div.form-group label.upload {
+    position: relative;
+    display: block;
+    width: 2.4875em;
+    height: 2.4875em;
+
+    margin: 0 auto;
+    margin-top: 0.8em;
+
+    cursor: pointer;
+
+    background-color: #ffffff;
+    
+    border-radius: 1.5em;
+    border: 0.15em solid #5271ff;
+
+    transition: border-color .5s ease;
+}
+
+div.Emergency div.form-group label.upload span {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    color: #9AACFF;
+    font-family: Poppins, sans-serif;
+    font-weight: 300;
+    font-size: 3.8em;
+    line-height: 0.65em;
+
+    transition: color .5s ease;
+}
+
+div.Emergency div.form-group label.upload:hover,
+div.Emergency div.form-group label.upload:focus {
+    border-color: #9AACFF;
+}
+
+div.Emergency div.form-group label.upload:hover span,
+div.Emergency div.form-group label.upload:focus span {
+    color: #5271ff
+}
+
+div.Emergency div.form-group label.upload input[type=file] {
+    display: none;
+}
+
+div.Emergency div.form-group div.radio-group {
+    display: flex;
+    justify-content: space-evenly;
+
+    margin-top: 0.8em;
+}
+
+div.Emergency div.form-group div.radio-group input {
+    display: none;
+}
+
+div.Emergency div.form-group div.radio-group label {
+    color: #9AACFF;
+    font-family: Poppins, sans-serif;
+    font-size: 1.125em;
+    font-weight: normal;
+    text-align: center;
+
+    transition: color .5s ease, font-weight .2s ease;
+}
+
+div.Emergency div.form-group div.radio-group input:checked + label {
+    color: #5271ff;
+    font-weight: 700;
+}
+
+div.Emergency div.form-group input.error,
+div.Emergency div.form-group textarea.error {
+    background-color: #ff7177;
+
+    border-color: #cc3030;
+
+    animation: shake .5s 1 ease;
+}
+
+div.Emergency div.form-group input:hover:not(.error),
+div.Emergency div.form-group input:focus:not(.error),
+div.Emergency div.form-group textarea:hover:not(.error),
+div.Emergency div.form-group textarea:focus:not(.error) {
+    border-color: #b3bbff;
+}
+
+div.Emergency div.form-group input.error:hover,
+div.Emergency div.form-group input.error:focus,
+div.Emergency div.form-group textarea.error:hover,
+div.Emergency div.form-group textarea.error:focus {
+    background-color: #ffffff;
+
+    border-color: #ff7177;
+}
+
+div.Emergency div.form-group input {
+    padding: 0.3em 0.6em;
+
+    border-radius: 1.25em;
+}
+
+div.Emergency div.form-group textarea {
+    height: 6em;
+
+    padding: 0.3em 0.8em;
+
+    border-radius: 2em;
+
+    resize: none;
+}
+
+div.Emergency div.form-group div.error {
+    margin-top: 0.25em;
+
+    color: #cc3030;
+    font-family: Poppins, sans-serif;
+    font-weight: 500;
+    font-size: 1em;
+    text-align: left;
+}
+
+@media screen and (max-width: 450px) {
+    div.Emergency {
+        min-height: calc(100% - 9.375em);
+
+        margin-top: 9.375em;
+    }
+
+    div.Emergency div.steps-container {
+        transition: left .8s ease;
+    }
+}

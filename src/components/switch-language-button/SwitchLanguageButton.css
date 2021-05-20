@@ -1,4 +1,4 @@
-.SwitchLanguageButton {
+button.SwitchLanguageButton {
     z-index: 100;
     position: fixed;
     right: 2em;
@@ -18,27 +18,27 @@
     border-radius: 1em;
 }
 
-.SwitchLanguageButton:hover {
+button.SwitchLanguageButton:hover {
     background-color: #536DFE;
     color: #ffffff;
 }
 
-.SwitchLanguageButton span {
+button.SwitchLanguageButton span {
     margin:0.2em;
 
-    color:#ffffff;
+    color:#9AACFF;
     font-weight: normal;
     font-size: 1em;
 }
 
-.SwitchLanguageButton span.active {
-    color: #9AACFF;
+button.SwitchLanguageButton span.active {
+    color: #ffffff;
     font-weight: bold;
     font-size: 1.2em;
 }
 
 @media screen and (max-width: 400px) {
-    .SwitchLanguageButton {
+    button.SwitchLanguageButton {
         right: 1em;
         top: 1em;
 
