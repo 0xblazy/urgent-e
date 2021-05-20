@@ -31,7 +31,12 @@ class Dashboard extends React.Component {
     }
 
     getClassName = () => {
-        return this.state.alert ? "Dashboard alert" : "Dashboard";
+        let c = "Dashboard";
+        
+        if (this.state.alert) c += " alert";
+        if (this.state.showIgnore) c += " show-ignore";
+
+        return c;
     }
 
     onShowIgnoreChange = (showIgnore) => {

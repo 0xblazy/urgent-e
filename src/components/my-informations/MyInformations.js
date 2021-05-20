@@ -31,11 +31,11 @@ class MyInformations extends React.Component {
         this.props.onPathChange("/my-informations");
     }
 
-    onStepChange = (new_step) => {
+    onStepChange = (new_step, skip = false) => {
         // Si on est pas à l'étape bloquée ou si on a cliqué sur le bouton ANNULER/TERMINER
-        if (this.state.locked_step === 0 || this.state.locked_step >= new_step || new_step > 4) {
+        if (this.state.locked_step === 0 || this.state.locked_step >= new_step || skip) {
             // Soumission du formulaire
-            if (this.state.step === 3 && new_step > 4) {
+            if (new_step === 4) {
                 if (this.formRef.current) {
                     this.formRef.current.handleSubmit();
                 }
@@ -44,7 +44,7 @@ class MyInformations extends React.Component {
                 step: new_step
             }, () => {
                 // Renvoi à l'accueil après avoir terminé de compléter les informations personnelles
-                if (this.state.step > 4) {
+                if (this.state.step === 4 || this.state.step === 10) {
                     const {history} = this.props;
     
                     if (history) {
@@ -131,7 +131,7 @@ class MyInformations extends React.Component {
                     this.setState({
                         locked_step: i
                     });
-                    locked = true
+                    locked = true;
                 }
             }
             if (!locked) {
@@ -164,7 +164,7 @@ class MyInformations extends React.Component {
                         weight: this.props.user ? this.props.user.weight : "",
                         address: this.props.user ? this.props.user.address : "",
                         phone_number: this.props.user ? this.props.user.phone_number : "",
-                        vital_card: this.props.user ? this.props.user.vital_card : "",
+                        social_security: this.props.user ? this.props.user.social_security : "",
                         mutual: this.props.user ? this.props.user.mutual : "",
                         emergency_contact: this.props.user ? this.props.user.emergency_contact : "",
                         allergies: this.props.user ? this.props.user.allergies : "",
@@ -218,7 +218,7 @@ class MyInformations extends React.Component {
                     </Form>
                 </Formik>
                 
-                <NextPageButton language={this.props.language} step={this.state.step} locked_step={this.state.locked_step} onStepChange={(step) => this.onStepChange(step)} />
+                <NextPageButton language={this.props.language} path={this.props.path} step={this.state.step} locked_step={this.state.locked_step} onStepChange={(step, skip = false) => this.onStepChange(step, skip)} />
             </div>
         );
     }

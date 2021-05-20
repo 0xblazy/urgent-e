@@ -16,7 +16,7 @@ class Emergency extends React.Component {
 
         this.state = {
             step: 1,
-            locked_step: 1
+            locked_step: this.props.emergency_request ? 0 : 1
         }
 
         this.formRef = React.createRef();
@@ -31,11 +31,11 @@ class Emergency extends React.Component {
         this.props.onPathChange("/emergency");
     }
 
-    onStepChange = (new_step) => {
+    onStepChange = (new_step, skip = false) => {
         // Si on est pas à l'étape bloquée ou si on a cliqué sur le bouton ANNULER/TERMINER
-        if (this.state.locked_step === 0 || this.state.locked_step >= new_step || new_step > 4) {
+        if (this.state.locked_step === 0 || this.state.locked_step >= new_step || skip) {
             // Soumission du formulaire
-            if (this.state.step === 3 && new_step > 4) {
+            if (new_step === 4) {
                 if (this.formRef.current) {
                     this.formRef.current.handleSubmit();
                 }
@@ -43,11 +43,17 @@ class Emergency extends React.Component {
             this.setState({
                 step: new_step
             }, () => {
-                // Renvoi à l'accueil après avoir terminé de compléter les informations personnelles
-                if (this.state.step > 4) {
-                    const {history} = this.props;
-    
-                    if (history) {
+                const {history} = this.props;
+
+                if (history) {
+                    // Envoie poursuivre le formulaire
+                    if (this.state.step === 4) {
+                        history.push("/emergency/transferred");
+                    }
+
+                    // Renvoie à l'accueil si on annule
+                    if (this.state.step === 10) {
+                        this.props.onEmergencyRequestReset();
                         history.push("/");
                     }
                 }
@@ -81,7 +87,7 @@ class Emergency extends React.Component {
                     this.setState({
                         locked_step: i
                     });
-                    locked = true
+                    locked = true;
                 }
             }
             if (!locked) {
@@ -104,19 +110,25 @@ class Emergency extends React.Component {
                 <div className="shadow"></div>
                 <Formik
                     initialValues={{ 
-                        what_brings_you: "",
-                        pain: 50,
-                        photo: "",
-                        connected_object: "",
-                        address: this.props.user ? this.props.user.address : "",
-                        perimeter: "",
-                        hospital: "",
-                        ambulance: "",
-                        name: this.props.user ? this.props.user.name : "",
-                        firstname: this.props.user ? this.props.user.firstname : "",
-                        phone_number: this.props.user ? this.props.user.phone_number : "",
-                        social_security: this.props.user ? this.props.user.social_security : "",
-                        mutual: this.props.user ? this.props.user.mutual : ""
+                        what_brings_you: this.props.emergency_request ? this.props.emergency_request.what_brings_you : "",
+                        pain: this.props.emergency_request ? this.props.emergency_request.pain : 50,
+                        photo: this.props.emergency_request ? this.props.emergency_request.photo : "",
+                        connected_object: this.props.emergency_request ? this.props.emergency_request.connected_object : "",
+                        address: this.props.emergency_request ? this.props.emergency_request.address : 
+                            this.props.user ? this.props.user.address : "",
+                        perimeter: this.props.emergency_request ? this.props.emergency_request.perimeter : "",
+                        hospital: this.props.emergency_request ? this.props.emergency_request.hospital : "",
+                        ambulance: this.props.emergency_request ? this.props.emergency_request.ambulance : "no",
+                        name: this.props.emergency_request ? this.props.emergency_request.name : 
+                            this.props.user ? this.props.user.name : "",
+                        firstname: this.props.emergency_request ? this.props.emergency_request.firstname : 
+                            this.props.user ? this.props.user.firstname : "",
+                        phone_number: this.props.emergency_request ? this.props.emergency_request.phone_number : 
+                            this.props.user ? this.props.user.phone_number : "",
+                        social_security: this.props.emergency_request ? this.props.emergency_request.social_security : 
+                            this.props.user ? this.props.user.social_security : "",
+                        mutual: this.props.emergency_request ? this.props.emergency_request.mutual : 
+                            this.props.user ? this.props.user.mutual : ""
                     }}
                     validationSchema={
                         Yup.object().shape({
@@ -133,7 +145,7 @@ class Emergency extends React.Component {
                                 .required(Translator.translate("required_field", this.props.language)),
                             hospital: Yup.string()
                                 .required(Translator.translate("required_field", this.props.language)),
-                            ambulance: Yup.number()
+                            ambulance: Yup.string()
                                 .required(Translator.translate("required_field", this.props.language)),
                             name: Yup.string()
                                 .required(Translator.translate("required_field", this.props.language)),
@@ -150,7 +162,7 @@ class Emergency extends React.Component {
                     validateOnMount={true}
                     innerRef={this.formRef}
                     onSubmit={(emergency) => {
-                        alert(JSON.stringify(emergency, null, 2));
+                        this.props.onEmergencyRequestChange(emergency);
                     }}
                 >
                     <Form className="stepper-container" onBlur={(e) => this.handleBlur(e)}>
@@ -213,9 +225,9 @@ class Emergency extends React.Component {
                                 <div className="form-group">
                                     <label>{Translator.translate("ambulance", this.props.language)}</label>
                                     <div className="radio-group">
-                                        <Field type="radio" name="ambulance" id="amb-1" value="1" className={this.getInputErrorClass("ambulance")} />
+                                        <Field type="radio" name="ambulance" id="amb-1" value="yes" className={this.getInputErrorClass("ambulance")} />
                                         <label htmlFor="amb-1">{Translator.translate("yes", this.props.language)}</label>
-                                        <Field type="radio" name="ambulance" id="amb-2" value="0" className={this.getInputErrorClass("ambulance")} />
+                                        <Field type="radio" name="ambulance" id="amb-2" value="no" className={this.getInputErrorClass("ambulance")} />
                                         <label htmlFor="amb-2">{Translator.translate("no", this.props.language)}</label>
                                     </div>
                                     <ErrorMessage component="div" className="error" name="ambulance" />
@@ -252,7 +264,7 @@ class Emergency extends React.Component {
                     </Form>
                 </Formik>
                 
-                <NextPageButton language={this.props.language} step={this.state.step} locked_step={this.state.locked_step} onStepChange={(step) => this.onStepChange(step)} />
+                <NextPageButton language={this.props.language} path={this.props.path} step={this.state.step} locked_step={this.state.locked_step} onStepChange={(step, skip = false) => this.onStepChange(step, skip)} />
             </div>
         );
     }

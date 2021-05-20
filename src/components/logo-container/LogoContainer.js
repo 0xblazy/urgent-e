@@ -4,7 +4,7 @@ import './LogoContainer.css';
 
 class LogoContainer extends React.Component {
 
-    get_class_name = () => {
+    getClassname = () => {
         if (this.props.path === "/intro") {
             return "LogoContainer intro";
         } else if (this.props.path === "/intro/slideshow") {
@@ -14,7 +14,11 @@ class LogoContainer extends React.Component {
         }
     }
 
-    on_logo_click = () => {
+    onLogoClick = () => {
+        if (this.props.path === "/emergency/transferred") {
+            this.props.onEmergencyRequestReset();
+        }
+
         if (this.props.path !== "/intro" && this.props.path !== "/intro/slideshow") {
             const {history} = this.props;
     
@@ -26,8 +30,8 @@ class LogoContainer extends React.Component {
 
     render() {
         return (
-            <div className={this.get_class_name()}>
-                <button onClick={(e) => this.on_logo_click()}>
+            <div className={this.getClassname()}>
+                <button onClick={(e) => this.onLogoClick()}>
                     <img alt="Logo Urgent-E" src="./images/Urgent-E.png" />
                 </button>
             </div>

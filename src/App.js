@@ -10,6 +10,7 @@ import Dashboard from './components/dashboard/Dashboard';
 import Confidentiality from './components/confidentiality/Confidentiality';
 import MyInformations from './components/my-informations/MyInformations';
 import Emergency from './components/emergency/Emergency';
+import EmergencyTransferred from './components/emergency/emergency-transferred/EmergencyTransferred';
 
 import Translator from './utils/Translator'; 
 
@@ -20,7 +21,8 @@ export default class App extends React.Component {
         this.state = {
             language: "fr",
             path: "/",
-            user: null
+            user: null,
+            emergency_request: null
         }
     }
 
@@ -54,11 +56,28 @@ export default class App extends React.Component {
         localStorage["user"] = JSON.stringify(user, null, 2);
     }
 
+    onEmergencyRequestChange = (emergency_request) => {
+        for (const [name, value] of Object.entries(emergency_request)) {
+            this.setState(prevState => ({
+                emergency_request: {
+                    ...prevState.emergency_request,
+                    [name]: value
+                }
+            }));
+        }
+    }
+
+    onEmergencyRequestReset = () => {
+        this.setState({
+            emergency_request: null
+        });
+    }
+
     render() {
         return (
             <div className="App">
                 <Router>
-                    <LogoContainer path={this.state.path} />
+                    <LogoContainer path={this.state.path} onEmergencyRequestReset={() => this.onEmergencyRequestReset()} />
                     {
                         (this.state.path === "/" || this.state.path === "/emergency") &&
                         <EmergencyButton language={this.state.language} path={this.state.path} />
@@ -82,6 +101,7 @@ export default class App extends React.Component {
                         } />
                         <Route path="/my-informations" exact render={
                             () => <MyInformations language={this.state.language}
+                            path={this.state.path}
                             user={this.state.user}
                             onLanguageChange={(language) => this.onLanguageChange(language)}
                             onPathChange={(path) => this.onPathChange(path)}
@@ -89,9 +109,23 @@ export default class App extends React.Component {
                         } /> 
                         <Route path="/emergency" exact render={
                             () => <Emergency language={this.state.language}
+                            path={this.state.path}
                             user={this.state.user}
+                            emergency_request={this.state.emergency_request}
                             onLanguageChange={(language) => this.onLanguageChange(language)}
-                            onPathChange={(path) => this.onPathChange(path)} />
+                            onPathChange={(path) => this.onPathChange(path)}
+                            onEmergencyRequestChange={(emergency_request) => this.onEmergencyRequestChange(emergency_request)}
+                            onEmergencyRequestReset={() => this.onEmergencyRequestReset()} />
+                        } />
+                        <Route path="/emergency/transferred" exact render={
+                            () => <EmergencyTransferred language={this.state.language}
+                            path={this.state.path}
+                            user={this.state.user}
+                            emergency_request = {this.state.emergency_request}
+                            onLanguageChange={(language) => this.onLanguageChange(language)}
+                            onPathChange={(path) => this.onPathChange(path)}
+                            onEmergencyRequestChange={(emergency_request) => this.onEmergencyRequestChange(emergency_request)}
+                            onEmergencyRequestReset={() => this.onEmergencyRequestReset()} />
                         } />
                         <Route path="/" render={
                             ()=> <div>{Translator.translate("error", this.state.language)}</div>
@@ -103,6 +137,7 @@ export default class App extends React.Component {
                         this.state.path !== "/intro" &&
                         this.state.path !== "/intro/slideshow" &&
                         this.state.path !== "/emergency" &&
+                        this.state.path !== "/emergency/transferred" &&
                         this.state.path !== "/my-informations" &&
                         <Navigation language={this.state.language} />
                     }

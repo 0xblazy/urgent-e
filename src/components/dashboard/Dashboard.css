@@ -34,6 +34,10 @@ div.Dashboard.alert {
     background-color: #FDD9D9;
 }
 
+div.Dashboard.show-ignore {
+    overflow-y: hidden;
+}
+
 div.Dashboard div.info {
     width: 100%;
 

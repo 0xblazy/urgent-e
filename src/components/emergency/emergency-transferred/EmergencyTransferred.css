@@ -1,0 +1,321 @@
+@keyframes appearance {
+    from {
+        opacity: 0;
+    } to {
+        opacity: 1;
+    }
+}
+
+@keyframes slide-down {
+    from {
+        opacity: 0;
+        transform: translateY(-100%);
+    } to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes turning {
+    from {
+        transform: rotate(0deg);
+    } to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes zoom {
+    from {
+        opacity: 0;
+        transform: scale(0);
+    } to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes shake {
+    0% { transform: translate(1px, 1px) rotate(0deg); }
+    10% { transform: translate(-1px, -2px) rotate(-1deg); }
+    20% { transform: translate(-3px, 0px) rotate(1deg); }
+    30% { transform: translate(3px, 2px) rotate(0deg); }
+    40% { transform: translate(1px, -1px) rotate(1deg); }
+    50% { transform: translate(-1px, 2px) rotate(-1deg); }
+    60% { transform: translate(-3px, 1px) rotate(0deg); }
+    70% { transform: translate(3px, 1px) rotate(-1deg); }
+    80% { transform: translate(-1px, -1px) rotate(1deg); }
+    90% { transform: translate(1px, 2px) rotate(0deg); }
+    100% { transform: translate(1px, -2px) rotate(-1deg); }
+}
+
+div.EmergencyTransferred {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    min-height: calc(100% - 6.3125em);
+
+    margin-top: 6.3125em;
+
+    background-color: #ffffff;
+}
+
+div.EmergencyTransferred div.header {
+    z-index: 50;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+
+    background-color: #ffffff;
+
+    box-shadow: 0 0 1em #fff, 0 0 0.9em #fff, 0 0 0.8em #fff, 0 0 0.7em #fff, 0 0 0.6em #fff, 0 0 0.5em #fff, 0 0 0.4em #fff, 0 0 0.3em #fff, 0 0 0.2em #fff, 0 0 0.1em #fff;
+
+    animation: slide-down .5s 1 ease;
+}
+
+div.EmergencyTransferred div.header img {
+    height: 6em;
+
+    margin: 0.5em;
+}
+
+div.EmergencyTransferred div.header img.waiting {
+    animation: turning 3s linear infinite;
+}
+
+div.EmergencyTransferred div.header h3 {
+    margin: 0.2em 0;
+    padding: 0 0.1em;
+
+    color: #000000;
+    font-family: Poppins, sans-serif;
+    font-weight: normal;
+    font-size: 1em;
+    text-align: center;
+}
+
+div.EmergencyTransferred div.header img.verified {
+    animation: zoom .5s 1 ease;
+}
+
+div.EmergencyTransferred div.header h2 {
+    margin: 0.2em 0;
+    padding: 0 0.2em;
+
+    color: #000000;
+    font-family: Poppins, sans-serif;
+    font-weight: 500;
+    font-size: 1.5em;
+    text-align: center;
+
+    animation: appearance .5s 1 ease;
+}
+
+div.EmergencyTransferred form.stepper-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+
+    overflow: hidden;
+
+    animation: appearance 1s 1 ease;
+}
+
+div.EmergencyTransferred div.steps-container {
+    position: absolute;
+    left: 0;
+    width: 300%;
+    height: 100%;
+
+    transition: left 1s ease;
+}
+
+div.EmergencyTransferred div.steps-container.step-1 {left: 0;}
+div.EmergencyTransferred div.steps-container.step-2 {left: -100%;}
+div.EmergencyTransferred div.steps-container.step-3 {left: -200%;}
+
+div.EmergencyTransferred div.steps-container div.step-1,
+div.EmergencyTransferred div.steps-container div.step-2,
+div.EmergencyTransferred div.steps-container div.step-3 {
+    position: absolute;
+    width: 33.33%;
+    height: 100%;
+
+    overflow-y: auto;
+
+    text-align: center;
+}
+
+div.EmergencyTransferred div.steps-container div.step-1 {left: 0;}
+div.EmergencyTransferred div.steps-container div.step-2 {left: 33.33%;}
+div.EmergencyTransferred div.steps-container div.step-3 {
+    left: 66.66%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+div.EmergencyTransferred div.steps-container div.form-group {
+    margin: 0 1.5em;
+    margin-top: 1.5em;
+}
+
+div.EmergencyTransferred div.steps-container div.form-group:first-child {
+    margin-top: 1em;
+}
+
+div.EmergencyTransferred div.steps-container div.form-group:last-child {
+    margin-bottom: 7em;
+}
+
+div.EmergencyTransferred div.form-group label {
+    display: block;
+
+    margin: 0;
+
+    color: #000000;
+    font-family: Poppins, sans-serif;
+    font-weight: normal;
+    font-size: 1.125em;
+    text-align: left;
+}
+
+div.EmergencyTransferred div.form-group textarea {
+    width: 100%;
+    box-sizing: border-box;
+    height: 11em;
+    resize: none;
+
+    margin: 0;
+    margin-top: 0.8em;
+    padding: 0.3em 0.8em;
+
+    background-color: #ffffff;
+    color: #444444;
+    font-family: Poppins, sans-serif;
+    font-weight: normal;
+    font-size: 1em;
+    text-align: left;
+
+    border-radius: 2em;
+    border: 0.15em solid #5271ff;
+    outline: none;
+
+    transition: border-color .5s ease, background-color .5s ease;
+}
+
+div.EmergencyTransferred div.form-group textarea.error {
+    background-color: #ff7177;
+
+    border-color: #cc3030;
+
+    animation: shake .5s 1 ease;
+}
+
+div.EmergencyTransferred div.form-group textarea:hover:not(.error),
+div.EmergencyTransferred div.form-group textarea:focus:not(.error) {
+    border-color: #b3bbff;
+}
+
+div.EmergencyTransferred div.form-group textarea.error:hover,
+div.EmergencyTransferred div.form-group textarea.error:focus {
+    background-color: #ffffff;
+
+    border-color: #ff7177;
+}
+
+div.EmergencyTransferred div.form-group div.error {
+    margin-top: 0.25em;
+
+    color: #cc3030;
+    font-family: Poppins, sans-serif;
+    font-weight: 500;
+    font-size: 1em;
+    text-align: left;
+}
+
+div.EmergencyTransferred div.grid-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+
+    margin: 0.5em;
+}
+
+div.EmergencyTransferred div.grid-item:first-child {
+    margin-top: 1em;
+}
+
+div.EmergencyTransferred div.grid-item:last-child {
+    margin-bottom: 7em;
+}
+
+div.EmergencyTransferred div.grid-item div.metric-frame {
+    z-index: 0;
+    position: relative;
+    width: 5.75em;
+    height: 5.75em;
+    overflow: hidden;
+
+    background-color: #9AACFF;
+
+    border-radius: 50%;
+    border: 0.125em solid #536DFE;
+}
+
+div.EmergencyTransferred div.metric-frame div.metric-value {
+    padding-top: 25%;
+
+    color: #536DFE;
+    font-family: Poppins, sans-serif;
+    font-size: 2em;
+    font-weight: 700;
+    text-align: center;
+}
+
+div.EmergencyTransferred div.metric-frame div.metric-value::before {
+    z-index: -1;
+    position: absolute;
+    top: 8%;
+    left: 8%;
+    width: 80%;
+    height: 80%;
+
+    content: '';
+
+    background-color: #F5FDFF;
+
+    border-radius: 50%;
+    border: 0.0625em solid #536DFE;
+}
+
+div.EmergencyTransferred div.grid-item div.metric-name {
+    margin-top: 0.5em;
+
+    color: #536DFE;
+    font-family: Poppins, sans-serif;
+    font-size: 1.125em;
+    font-weight: 600;
+    text-align: center;
+}
+
+@media screen and (max-width: 450px) {
+    div.EmergencyTransferred {
+        min-height: calc(100% - 4.6875em);
+
+        margin-top: 4.6875em;
+    }
+
+    div.EmergencyTransferred div.steps-container {
+        transition: left .8s ease;
+    }
+}

@@ -19,7 +19,7 @@ div.GridMetrics {
     margin-bottom: 0.5em;
 }
 
-div.GridMetrics div.grid-item{
+div.GridMetrics div.grid-item {
     width: 6em;
     height: 9em;
 
@@ -34,7 +34,7 @@ div.GridMetrics div.grid-item:nth-child(4) {animation: zoom 1s .3s 1 ease forwar
 div.GridMetrics div.grid-item:nth-child(5) {animation: zoom 1s .4s 1 ease forwards;}
 div.GridMetrics div.grid-item:nth-child(6) {animation: zoom 1s .5s 1 ease forwards;}
 
-div.grid-item div.metric-frame{
+div.GridMetrics div.grid-item div.metric-frame {
     z-index: 0;
     position: relative;
     width: 5.75em;
@@ -44,10 +44,10 @@ div.grid-item div.metric-frame{
     background-color: #9AACFF;
 
     border-radius: 50%;
-    border: 2px solid #536DFE;
+    border: 0.125em solid #536DFE;
 }
 
-div.metric-frame div.metric-value {
+div.GridMetrics div.metric-frame div.metric-value {
     padding-top : 25%;
 
     color: #536DFE;
@@ -57,7 +57,7 @@ div.metric-frame div.metric-value {
     text-align: center;
 }
 
-div.metric-frame div.metric-value::before {
+div.GridMetrics div.metric-frame div.metric-value::before {
     z-index: -1;
     position: absolute;
     top: 8%;
@@ -70,10 +70,10 @@ div.metric-frame div.metric-value::before {
     background-color: #F5FDFF;
     
     border-radius: 50%;
-    border: 2px solid #536DFE;
+    border: 0.0625em solid #536DFE;
 }
 
-div.grid-item div.metric-name{
+div.GridMetrics div.grid-item div.metric-name {
     height: 2em;
     
     margin-top: 1em;
