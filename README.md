@@ -25,7 +25,7 @@ Renseignez ici vos informations personnelles : nom, prénom, âge, poids, taille
 ### Aller aux  Urgences
 
 Indiquez votre motif, précisez le nouveau de douleur, sélectionnez un hopital près de vous, précisez si vous souhaitez une ambulance ou non, ajoutez vos informations personnelles si cela n'a pas été fait et soyez pris en charge rapidement par les services d'urgences.\
-Avec votre numéro de patient, les urgences retrouverons facilement votre dossier.
+Avec votre numéro de patient, les urgences retrouveront facilement votre dossier.
 
 ## Scripts disponibles
 
@@ -33,7 +33,7 @@ Dans le répertoire du projet, vous pouvez faire :
 
 ### `npm install`
 
-Installez les packages nécessaires à l'exécution du projet.
+Installez les packages nécessaires à l'exécution du projet (`React Router`, `Formik` et `Yup`).
 
 ### `yarn start`
 
