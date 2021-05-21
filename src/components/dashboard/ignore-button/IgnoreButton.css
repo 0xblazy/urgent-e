@@ -6,19 +6,47 @@
     }
 }
 
+@keyframes countdown {
+    from {transform: scale(1);}
+    10% {transform: scale(1.5);}
+    to {transform: scale(1);}
+}
+
 div.IgnoreButton {
     z-index: 50;
     position: absolute;
     top: 0;
     bottom: 0;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 100%;
 
-    background-color: rgba(255, 255, 255, 0.33);
+    background-color: rgba(255, 255, 255, 0.66);
 
-    animation: appearance .5s ease;
+    animation: appearance .5s 1 ease;
+}
+
+div.IgnoreButton h3 {
+    margin: 0.2em 0;
+    padding: 0 0.1em;
+    
+    color: #536DFE;
+    font-family: Poppins, sans-serif;
+    font-size: 1.2em;
+    font-weight: 500;
+    text-align: center;
+}
+
+div.IgnoreButton h3 span.countdown {
+    display: inline-block;
+    width: 1.6em;
+
+    font-size: 1.3em;
+    font-weight: 600;
+
+    animation: countdown 1s infinite ease;
 }
 
 div.IgnoreButton button {
@@ -28,6 +56,8 @@ div.IgnoreButton button {
     
     margin: 0;
     padding: 0.4em 0.8em;
+
+    cursor: pointer;
 
     background-color: #ffffff;
     color: #536DFE;
@@ -43,7 +73,7 @@ div.IgnoreButton button {
 div.IgnoreButton button::before {
     z-index: -1;
     position: absolute;
-    top: 2.6em;
+    top: 100%;
     left: 0;
     width: 100%;
     height: 100%;

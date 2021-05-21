@@ -1,0 +1,119 @@
+@keyframes zoom {
+    from {
+        opacity: 0;
+        transform: scale(0);
+    } to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes slide-down {
+    from {
+        opacity: 0;
+        transform: translateY(-100%);
+    } to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes shake {
+    0% { transform: translate(1px, 1px) rotate(0deg); }
+    10% { transform: translate(-1px, -2px) rotate(-1deg); }
+    20% { transform: translate(-3px, 0px) rotate(1deg); }
+    30% { transform: translate(3px, 2px) rotate(0deg); }
+    40% { transform: translate(1px, -1px) rotate(1deg); }
+    50% { transform: translate(-1px, 2px) rotate(-1deg); }
+    60% { transform: translate(-3px, 1px) rotate(0deg); }
+    70% { transform: translate(3px, 1px) rotate(-1deg); }
+    80% { transform: translate(-1px, -1px) rotate(1deg); }
+    90% { transform: translate(1px, 2px) rotate(0deg); }
+    100% { transform: translate(1px, -2px) rotate(-1deg); }
+}
+
+div.ContactEmergency {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    justify-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+div.ContactEmergency div.not-respond {
+    z-index: 1;
+
+    margin: 1em;
+    padding: 1em;
+
+    background-color: #ff7177;
+
+    border-radius: 2em;
+    border: 0.28em solid #cc3030;
+
+    animation: zoom .5s 1 ease forwards, shake .5s .5s 1 ease;
+}
+
+div.ContactEmergency div.not-respond h3 {
+    margin: 0;
+    margin-bottom: 0.36em;
+
+    color: #cc3030;
+    font-family: Poppins, sans-serif;
+    font-weight: 600;
+    font-size: 1.4em;
+    text-align: center;
+}
+
+div.ContactEmergency div.not-respond h3:last-child {margin-bottom: 0;}
+
+div.ContactEmergency button.not-contact {
+    z-index: 0;
+    position: relative;
+    overflow: hidden;
+    opacity: 0;
+    
+    margin: 0 0.7142857143em;
+    padding: 0.4em;
+
+    cursor: pointer;
+
+    background-color: #ffffff;
+    color: #536DFE;
+    font-family: Poppins, sans-serif;
+    font-weight: 500;
+    font-size: 1.4em;
+    text-align: center;
+
+    border-radius: 3em;
+    border: 0.2em solid #9AACFF;
+
+    transform: translateY(-100%);
+
+    animation: slide-down .5s 1s 1 ease forwards;
+}
+
+div.ContactEmergency button.not-contact::before {
+    z-index: -1;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    content: '';
+
+    background-color: #e6fbff;
+    color: #ffffff;
+    
+    border-radius: 50% 50% 0 0;
+    
+    transition: all .5s;
+}
+
+div.ContactEmergency button.not-contact:hover::before {
+    top: 0;
+
+    border-radius: 0;
+}

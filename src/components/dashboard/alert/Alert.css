@@ -30,7 +30,7 @@ div.Alert {
 
     padding: 0 1em;
     
-    animation: zoom .5s ease forwards, shake .5s .5s ease;
+    animation: zoom .5s 1 ease forwards, shake .5s .5s 1 ease;
 }
 
 div.Alert img {

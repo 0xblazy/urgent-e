@@ -30,17 +30,14 @@ button.SwitchLanguageButton {
     animation: slide-down .5s 1 ease;
 }
 
-button.SwitchLanguageButton:hover {
-    background-color: #536DFE;
-    color: #ffffff;
-}
-
 button.SwitchLanguageButton span {
     margin:0.2em;
 
     color:#9AACFF;
     font-weight: normal;
     font-size: 1em;
+
+    transition: color .5s ease;
 }
 
 button.SwitchLanguageButton span.active {
@@ -48,6 +45,9 @@ button.SwitchLanguageButton span.active {
     font-weight: bold;
     font-size: 1.2em;
 }
+
+button.SwitchLanguageButton:hover span {color: #ffffff;}
+button.SwitchLanguageButton:hover span.active {color: #9AACFF;}
 
 @media screen and (max-width: 400px) {
     button.SwitchLanguageButton {
