@@ -16,7 +16,7 @@ Surveillez vos métriques et recevez une alerte si l'une d'elle atteint un nivea
 #### Afficher les alertes
 
 La partie API étant encore en développement, l'affichage de l'alerte se fait de facon manuelle, seulement pour voir quelle forme elle prend.\
-Avec **React Developer Tools**, sélectionnez le second composant ***Dashboard*** (sans *withRouter*) et cocher l'état `alert` ou `alertCritical` pour afficher l'alerte et, pour `alertCritical`, le décompte et le message de contact des urgences.
+Avec **React Developer Tools**, sélectionnez le second composant ***Dashboard*** (sans *withRouter*) et cochez l'état `alert` ou `alertCritical` pour afficher l'alerte et, pour `alertCritical`, le décompte et le message de contact des urgences.
 
 ### Mes Informations
 
