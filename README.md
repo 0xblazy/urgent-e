@@ -11,7 +11,7 @@ Renseignez vos informations, surveillez vos métriques et contactez les urgences
 
 ### Tableau de bord
 
-Surveillez vos métriques et recevez une alerte si l'une d'elle atteint un niveau critique.
+Surveillez vos métriques et recevez une alerte si l'une d'elles atteint un niveau critique.
 
 #### Afficher les alertes
 
