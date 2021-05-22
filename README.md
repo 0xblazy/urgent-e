@@ -27,13 +27,22 @@ Renseignez ici vos informations personnelles : nom, prénom, âge, poids, taille
 Indiquez votre motif, précisez le nouveau de douleur, sélectionnez un hopital près de vous, précisez si vous souhaitez une ambulance ou non, ajoutez vos informations personnelles si cela n'a pas été fait et soyez pris en charge rapidement par les services d'urgences.\
 Avec votre numéro de patient, les urgences retrouveront facilement votre dossier.
 
+#### Utiliser la carte Maps
+
+Pour que la sélection de l'hopital fonctionne, plusieurs choses sont à faire :\
+- Créer une clé API sur [Google Cloud Platform](console.cloud.google.com) avec les API **Maps JavaScript API**, **Geocoding API** et **Places API**
+- Créer un fichier `.env` à la racine du projet avec une variable `REACT_APP_GOOGLE_API_KEY=votreclé` pour pouvoir utiliser les API Maps
+- Installer l'extension **Allow CORS** ([Chrome](https://chrome.google.com/webstore/detail/allow-cors-access-control/lhobafahddgcelffkeicbaginigeejlf), [Firefox](https://addons.mozilla.org/fr/firefox/addon/access-control-allow-origin/)) et l'activer pour permettre d'utiliser l'API **Places API** (qui est parfois bloquée sur un serveur local)
+
+Vous pourrez alors choisir un hopital après avoir renseigner votre adresse et le périmètre de recherche.
+
 ## Scripts disponibles
 
 Dans le répertoire du projet, vous pouvez faire :
 
 ### `npm install`
 
-Installez les packages nécessaires à l'exécution du projet (`React Router`, `Formik` et `Yup`).
+Installez les packages nécessaires à l'exécution du projet (**React Router**, **Formik**, **Yup**, **@react-google-maps/api** et **axios**).
 
 ### `yarn start`
 

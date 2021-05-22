@@ -1,11 +1,12 @@
 import React from 'react';
 import {withRouter} from 'react-router-dom';
-import {Formik, Form, Field, ErrorMessage} from 'formik';
+import {Formik, Form, Field, ErrorMessage, getIn} from 'formik';
 import * as Yup from 'yup';
 import './Emergency.css';
 
 import NextPageButton from '../next-page-button/NextPageButton';
 import SwitchLanguageButton from '../switch-language-button/SwitchLanguageButton';
+import FindingHospital from './finding-hospital/FindingHospital';
 
 import Translator from '../../utils/Translator';
 
@@ -16,7 +17,9 @@ class Emergency extends React.Component {
 
         this.state = {
             step: 1,
-            locked_step: this.props.emergency_request ? 0 : 1
+            locked_step: this.props.emergency_request ? 0 : 1,
+            address: this.props.emergency_request ? this.props.emergency_request.address : this.props.user ? this.props.user.address : null,
+            perimeter: this.props.emergency_request ? this.props.emergency_request.perimeter : null
         }
 
         this.formRef = React.createRef();
@@ -67,14 +70,21 @@ class Emergency extends React.Component {
 
     getInputErrorClass = (fieldName) => {
         if (this.formRef.current) {
-            return fieldName in this.formRef.current.errors ? "error" : "";
+            return getIn(this.formRef.current.errors, fieldName) ? "error" : "";
         } else {
             return "";
         }
     }
 
     handleBlur = (event) => {
-        if (event.target.name in this.formRef.current.errors) {
+        // Met à jour l'adresse ou le périmètre pour le passer à FindingHospital
+        if (event.target.name === "address" || event.target.name === "perimeter") {
+            this.setState({
+                [event.target.name]: event.target.value
+            });
+        }
+
+        if (getIn(this.formRef.current.errors, event.target.name)) {
             this.setState({
                 locked_step: this.state.step
             });
@@ -101,6 +111,16 @@ class Emergency extends React.Component {
     containsArray = (array, container) => {
         return container.some(v => array.includes(v));
     }
+
+    onHospitalChange = (hospital) => {
+        if (hospital) {
+            this.formRef.current.values.hospital.name = hospital.name;
+            this.formRef.current.values.hospital.address = hospital.address;
+        } else {
+            this.formRef.current.values.hospital.name = "";
+            this.formRef.current.values.hospital.address = "";
+        }
+    }
    
     render() {
         return (
@@ -116,8 +136,11 @@ class Emergency extends React.Component {
                         connected_object: this.props.emergency_request ? this.props.emergency_request.connected_object : "",
                         address: this.props.emergency_request ? this.props.emergency_request.address : 
                             this.props.user ? this.props.user.address : "",
-                        perimeter: this.props.emergency_request ? this.props.emergency_request.perimeter : "",
-                        hospital: this.props.emergency_request ? this.props.emergency_request.hospital : "",
+                        perimeter: this.props.emergency_request ? this.props.emergency_request.perimeter : 15,
+                        hospital: {
+                            name: this.props.emergency_request ? this.props.emergency_request.hospital.name : "",
+                            address: this.props.emergency_request ? this.props.emergency_request.hospital.address : ""
+                        },
                         ambulance: this.props.emergency_request ? this.props.emergency_request.ambulance : "no",
                         name: this.props.emergency_request ? this.props.emergency_request.name : 
                             this.props.user ? this.props.user.name : "",
@@ -140,10 +163,6 @@ class Emergency extends React.Component {
                             address: Yup.string()
                                 .required(Translator.translate("required_field", this.props.language)),
                             perimeter: Yup.number().typeError(Translator.translate("enter_perimeter", this.props.language))
-                                .positive(Translator.translate("enter_perimeter", this.props.language))
-                                .integer(Translator.translate("enter_perimeter", this.props.language))
-                                .required(Translator.translate("required_field", this.props.language)),
-                            hospital: Yup.string()
                                 .required(Translator.translate("required_field", this.props.language)),
                             ambulance: Yup.string()
                                 .required(Translator.translate("required_field", this.props.language)),
@@ -219,8 +238,15 @@ class Emergency extends React.Component {
                                     <ErrorMessage component="div" className="error" name="perimeter" />
                                 </div>
                                 <div className="form-group">
-                                    <Field type="text" name="hospital" placeholder="À remplacer par Maps" className={this.getInputErrorClass("hospital")} />
-                                    <ErrorMessage component="div" className="error" name="hospital" />
+                                    <FindingHospital language={this.props.language} 
+                                        step={this.state.step}
+                                        mapStep={2}
+                                        address={this.state.address}
+                                        perimeter={this.state.perimeter}
+                                        onHospitalChange={(hospital) => this.onHospitalChange(hospital)} />
+                                    <Field type="hidden" name="hospital.name" />
+                                    <Field type="hidden" name="hospital.address" />
+                                    <ErrorMessage component="div" className="error" name="hospital.name" />
                                 </div>
                                 <div className="form-group">
                                     <label>{Translator.translate("ambulance", this.props.language)}</label>

@@ -1,6 +1,6 @@
 import React from 'react';
 import {withRouter} from 'react-router-dom';
-import {Formik, Form, Field, ErrorMessage} from 'formik';
+import {Formik, Form, Field, ErrorMessage, getIn} from 'formik';
 import * as Yup from 'yup';
 import './MyInformations.css';
 
@@ -111,14 +111,14 @@ class MyInformations extends React.Component {
 
     getInputErrorClass = (fieldName) => {
         if (this.formRef.current) {
-            return fieldName in this.formRef.current.errors ? "error" : "";
+            return getIn(this.formRef.current.errors, fieldName) ? "error" : "";
         } else {
             return "";
         }
     }
 
     handleBlur = (event) => {
-        if (event.target.name in this.formRef.current.errors) {
+        if (getIn(this.formRef.current.errors, event.target.name)) {
             this.setState({
                 locked_step: this.state.step
             });

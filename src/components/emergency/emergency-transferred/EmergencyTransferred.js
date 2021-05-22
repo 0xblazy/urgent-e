@@ -108,7 +108,7 @@ class Emergency extends React.Component {
     }
 
     getTakeCare = () => {
-        return Translator.translate("hospital", this.props.language) + " " + this.props.emergency_request.hospital + ", " + Translator.translate("at", this.props.language) + " (une adresse), " + Translator.translate("is_ready", this.props.language);
+        return this.props.emergency_request.hospital.name + ", " + Translator.translate("at", this.props.language) + " " + this.props.emergency_request.hospital.address + ", " + Translator.translate("is_ready", this.props.language);
     }
 
     getPatientNumber = () => {
