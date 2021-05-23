@@ -21,7 +21,7 @@ Pour l'installer, voici la marche à suivre :
 - déplacez le dossier `api-strapi` en dehors du projet `urgent-e`, sinon le projet ne compilera pas
 - dans le dossier `api-strapi` déplacé, faites la commande `npm install` pour installer le projet
 - après avoir relancé le terminal, faites `yarn run develop` pour lancer le projet
-- Ouvrez [http://localhost:1337/admin](http://localhost:1337/admin) pour vous connecter à l'interface d'administration si vous le souaithez (les identifants sont dans le fichier `strapi_access`) à la racine du projet principal
+- Ouvrez [http://localhost:1337/admin](http://localhost:1337/admin) pour vous connecter à l'interface d'administration si vous le souhaitez (les identifants sont dans le fichier `strapi_access`) à la racine du projet principal
 
 ## Utilisation
 
