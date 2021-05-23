@@ -27,6 +27,40 @@ class MyInformations extends React.Component {
         };
     }
 
+    async postData () {
+
+        try {
+
+            let result = await fetch('http://localhost:1337/patients', {
+                method : 'post',
+                mode : 'no-cors',
+                headers : {
+                    'Accept' : 'application/json',
+                    'Content-type' : 'application/json',
+                },
+                body : JSON.stringify({
+                    "lastname": this.inputs["1"].name,
+                    "firstname": this.inputs["1"].firstname,
+                    "age": this.inputs["1"].age,
+                    "size": this.inputs["1"].size,
+                    "weight": this.inputs["1"].weight,
+                    "adress": this.inputs["2"].adress,
+                    "phone_number": this.inputs["2"].phone_number,
+                    "social_security": this.inputs["2"].social_security,
+                    "mutual": this.inputs["2"].mutual,
+                    "emergency_contact": this.inputs["2"].emergency_contact,
+                    "allergies": this.inputs["3"].allergies,
+                    "treatments": this.inputs["3"].treatments,
+                    "chronic_diseases": this.inputs["3"].chronic_diseases,
+                    "surgical_history": this.inputs["3"].surgical_history,
+                })
+            });
+
+        }catch (e){
+            console.log(e)
+        }
+    }
+
     componentDidMount() {
         this.props.onPathChange("/my-informations");
     }

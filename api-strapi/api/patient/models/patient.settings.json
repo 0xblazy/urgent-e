@@ -1,0 +1,60 @@
+{
+  "kind": "collectionType",
+  "collectionName": "patients",
+  "info": {
+    "name": "Patient"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "lastname": {
+      "type": "string"
+    },
+    "firstname": {
+      "type": "string"
+    },
+    "age": {
+      "type": "integer"
+    },
+    "size": {
+      "type": "integer"
+    },
+    "weight": {
+      "type": "integer"
+    },
+    "adress": {
+      "type": "string"
+    },
+    "phone_number": {
+      "type": "string"
+    },
+    "social_security": {
+      "type": "string"
+    },
+    "mutual": {
+      "type": "string"
+    },
+    "emergency_contact": {
+      "type": "string"
+    },
+    "allergies": {
+      "type": "string"
+    },
+    "treatments": {
+      "type": "string"
+    },
+    "chronic_diseases": {
+      "type": "string"
+    },
+    "surgical_history": {
+      "type": "string"
+    },
+    "metric": {
+      "model": "metrics"
+    }
+  }
+}

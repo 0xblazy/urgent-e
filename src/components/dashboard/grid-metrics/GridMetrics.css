@@ -84,3 +84,16 @@ div.GridMetrics div.grid-item div.metric-name {
     font-weight: 600;
     text-align: center;
 }
+
+@keyframes turning {
+    from {
+        transform: rotate(0deg);
+    } to {
+          transform: rotate(360deg);
+      }
+}
+
+.Loading{
+    width: 50px;
+    animation: turning 3s linear infinite;
+}

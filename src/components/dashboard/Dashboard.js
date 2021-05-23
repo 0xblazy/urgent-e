@@ -8,6 +8,8 @@ import IgnoreButton from './ignore-button/IgnoreButton';
 import ContactEmergency from './contact-emergency/ContactEmergency';
 import GridMetrics from './grid-metrics/GridMetrics';
 
+
+
 class Dashboard extends React.Component {
 
     constructor(props) {

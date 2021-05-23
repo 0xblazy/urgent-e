@@ -1,0 +1,33 @@
+{
+  "kind": "collectionType",
+  "collectionName": "metrics",
+  "info": {
+    "name": "Metrics"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "blood_pressure": {
+      "type": "integer"
+    },
+    "pulse": {
+      "type": "integer"
+    },
+    "saturation_o2": {
+      "type": "integer"
+    },
+    "respiratory_rate": {
+      "type": "integer"
+    },
+    "blood_sugar": {
+      "type": "integer"
+    },
+    "temperature": {
+      "type": "integer"
+    }
+  }
+}
