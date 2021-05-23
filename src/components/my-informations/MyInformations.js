@@ -28,9 +28,7 @@ class MyInformations extends React.Component {
     }
 
     async postData () {
-
         try {
-
             let result = await fetch('http://localhost:1337/patients', {
                 method : 'post',
                 mode : 'no-cors',
@@ -39,23 +37,23 @@ class MyInformations extends React.Component {
                     'Content-type' : 'application/json',
                 },
                 body : JSON.stringify({
-                    "lastname": this.inputs["1"].name,
-                    "firstname": this.inputs["1"].firstname,
-                    "age": this.inputs["1"].age,
-                    "size": this.inputs["1"].size,
-                    "weight": this.inputs["1"].weight,
-                    "adress": this.inputs["2"].adress,
-                    "phone_number": this.inputs["2"].phone_number,
-                    "social_security": this.inputs["2"].social_security,
-                    "mutual": this.inputs["2"].mutual,
-                    "emergency_contact": this.inputs["2"].emergency_contact,
-                    "allergies": this.inputs["3"].allergies,
-                    "treatments": this.inputs["3"].treatments,
-                    "chronic_diseases": this.inputs["3"].chronic_diseases,
-                    "surgical_history": this.inputs["3"].surgical_history,
+                    "lastname": this.formRef.current.values.lastname,
+                    "firstname": this.formRef.current.values.firstname,
+                    "age": this.formRef.current.values.age,
+                    "size": this.formRef.current.values.size,
+                    "weight": this.formRef.current.values.weight,
+                    "adress": this.formRef.current.values.adress,
+                    "phone_number": this.formRef.current.values.phone_number,
+                    "social_security": this.formRef.current.values.social_security,
+                    "mutual": this.formRef.current.values.mutual,
+                    "emergency_contact": this.formRef.current.values.emergency_contact,
+                    "allergies": this.formRef.current.values.allergies,
+                    "treatments": this.formRef.current.values.treatments,
+                    "chronic_diseases": this.formRef.current.values.chronic_diseases,
+                    "surgical_history": this.formRef.current.values.surgical_history,
                 })
             });
-
+            console.log(result)
         }catch (e){
             console.log(e)
         }
@@ -243,6 +241,7 @@ class MyInformations extends React.Component {
                     innerRef={this.formRef}
                     onSubmit={(user) => {
                         this.props.onUserChange(user)
+                        this.postData();
                     }}
                 >
                     <Form className="stepper-container" onBlur={(e) => this.handleBlur(e)}>
