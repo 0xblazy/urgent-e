@@ -3,6 +3,7 @@ import {withRouter} from 'react-router-dom';
 import {Formik, Form, Field, ErrorMessage, getIn} from 'formik';
 import * as Yup from 'yup';
 import './MyInformations.css';
+import axios from 'axios';
 
 import NextPageButton from '../next-page-button/NextPageButton';
 import SwitchLanguageButton from '../switch-language-button/SwitchLanguageButton';
@@ -27,36 +28,16 @@ class MyInformations extends React.Component {
         };
     }
 
-    async postData () {
-        try {
-            let result = await fetch('http://localhost:1337/patients', {
-                method : 'post',
-                mode : 'no-cors',
-                headers : {
-                    'Accept' : 'application/json',
-                    'Content-type' : 'application/json',
-                },
-                body : JSON.stringify({
-                    "lastname": this.formRef.current.values.lastname,
-                    "firstname": this.formRef.current.values.firstname,
-                    "age": this.formRef.current.values.age,
-                    "size": this.formRef.current.values.size,
-                    "weight": this.formRef.current.values.weight,
-                    "adress": this.formRef.current.values.adress,
-                    "phone_number": this.formRef.current.values.phone_number,
-                    "social_security": this.formRef.current.values.social_security,
-                    "mutual": this.formRef.current.values.mutual,
-                    "emergency_contact": this.formRef.current.values.emergency_contact,
-                    "allergies": this.formRef.current.values.allergies,
-                    "treatments": this.formRef.current.values.treatments,
-                    "chronic_diseases": this.formRef.current.values.chronic_diseases,
-                    "surgical_history": this.formRef.current.values.surgical_history,
-                })
-            });
-            console.log(result)
-        }catch (e){
-            console.log(e)
-        }
+    async postData(user) {
+        console.log(user);
+
+        axios({
+            method: "post",
+            url: "http://localhost:1337/patients",
+            data: user
+        }).then((response) => {
+            console.log(response);
+        });
     }
 
     componentDidMount() {
@@ -241,7 +222,7 @@ class MyInformations extends React.Component {
                     innerRef={this.formRef}
                     onSubmit={(user) => {
                         this.props.onUserChange(user)
-                        this.postData();
+                        // this.postData(user);
                     }}
                 >
                     <Form className="stepper-container" onBlur={(e) => this.handleBlur(e)}>

@@ -35,6 +35,12 @@ class Dashboard extends React.Component {
         } 
     }
 
+    componentWillUnmount() {
+        this.setState = (state,callback) => {
+            return;
+        };
+    }
+
     getClassName = () => {
         let c = "Dashboard";
         
