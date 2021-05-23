@@ -1,6 +1,6 @@
 # Urgent-E
 
-Application de gestion des services des urgences dans les hôpitaux réalisée dans le cadre du cours de Technologies informatiques innovantes (Master 1 Sciences Cognitives, IDMC Nancy).
+Application de gestion des services des urgences dans les hôpitaux réalisée dans le cadre du cours de Technologies informatiques innovantes (Master 1 Sciences Cognitives, IDMC Nancy) par Isabel Mineiro, Sofiane Adjaoud, Nicolas Carbonnier et Inaya El Alaoui.
 
 Cette application permet aux utilisateurs de suivre leurs métriques de santé, fournies par un objet connecté (montre, bracelet...) et de contacter les urgences en cas de besoin.\
 Le temps d'attente indiqué aux utilisateurs dépendra de leur état de santé, de l'affluence des urgences et des dossiers potentiellement prioritaires détectés parmi les utilisateurs de l'application.
@@ -47,7 +47,7 @@ Avec votre numéro de patient, les urgences retrouveront facilement votre dossie
 
 #### Utiliser la carte Maps
 
-Pour que la sélection de l'hopital fonctionne, plusieurs choses sont à faire :
+Pour que la sélection de l'hopital fonctionne, plusieurs choses sont à faire (la première étape ne concerne pas le projet rendu, seulement un téléchargement depuis GitHub) :
 - Créer une clé API sur [Google Cloud Platform](console.cloud.google.com) avec les API **Maps JavaScript API**, **Geocoding API** et **Places API**
 - Créer un fichier `.env` à la racine du projet avec une variable `REACT_APP_GOOGLE_API_KEY=votreclé` pour pouvoir utiliser les API Maps
 - Installer l'extension **Allow CORS** ([Chrome](https://chrome.google.com/webstore/detail/allow-cors-access-control/lhobafahddgcelffkeicbaginigeejlf), [Firefox](https://addons.mozilla.org/fr/firefox/addon/access-control-allow-origin/)) et l'activer pour permettre d'utiliser l'API **Places API** (qui est parfois bloquée sur un serveur local)
