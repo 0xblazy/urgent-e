@@ -5,6 +5,15 @@ Application de gestion des services des urgences dans les hôpitaux réalisée d
 Cette application permet aux utilisateurs de suivre leurs métriques de santé, fournies par un objet connecté (montre, bracelet...) et de contacter les urgences en cas de besoin.\
 Le temps d'attente indiqué aux utilisateurs dépendra de leur état de santé, de l'affluence des urgences et des dossiers potentiellement prioritaires détectés parmi les utilisateurs de l'application.
 
+## Installation
+
+### Installation du projet
+
+Pour installer le projet, plusieurs choses sont à faire:
+- Faites `npm install` pour installer les packages nécessaires à l'exécution du projet (**React Router**, **Formik**, **Yup**, **@react-google-maps/api** et **axios**)
+- Faites `yarn start` pour lancer le projet
+- Ouvrez [http://localhost:3000](http://localhost:3000) pour accéder à Urgent-E dans votre navigateur 
+
 ## Utilisation
 
 Renseignez vos informations, surveillez vos métriques et contactez les urgences en cas de besoin !!!
@@ -35,29 +44,3 @@ Pour que la sélection de l'hopital fonctionne, plusieurs choses sont à faire :
 - Installer l'extension **Allow CORS** ([Chrome](https://chrome.google.com/webstore/detail/allow-cors-access-control/lhobafahddgcelffkeicbaginigeejlf), [Firefox](https://addons.mozilla.org/fr/firefox/addon/access-control-allow-origin/)) et l'activer pour permettre d'utiliser l'API **Places API** (qui est parfois bloquée sur un serveur local)
 
 Vous pourrez alors choisir un hopital après avoir renseigner votre adresse et le périmètre de recherche.
-
-## Scripts disponibles
-
-Dans le répertoire du projet, vous pouvez faire :
-
-### `npm install`
-
-Installez les packages nécessaires à l'exécution du projet (**React Router**, **Formik**, **Yup**, **@react-google-maps/api** et **axios**).
-
-### `yarn start`
-
-Lancez l'application en mode développement.\
-Ouvrez [http://localhost:3000](http://localhost:3000) pour la voir dans votre navigateur.
-
-La page se rechargera si vous apportez des modifications.\
-Vous verrez également toutes les erreurs dans la console.
-
-### `yarn build`
-
-Compilez l'application pour la production dans le dossier `build`. \
-Le script regroupe correctement React en mode production et optimise la compilation pour les meilleures performances.
-
-La compilation est minifiée et les noms de fichiers incluent les hachages. \
-Votre application est prête à être déployée!
-
-Consultez la section sur [déploiement](https://facebook.github.io/create-react-app/docs/deployment) pour plus d'informations.

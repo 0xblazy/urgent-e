@@ -90,10 +90,11 @@ div.GridMetrics div.grid-item div.metric-name {
         transform: rotate(0deg);
     } to {
           transform: rotate(360deg);
-      }
+    }
 }
 
-.Loading{
-    width: 50px;
+div.GridMetrics div.metric-frame div.metric-value img.loading{
+    width: 1.5625em;
+
     animation: turning 3s linear infinite;
 }
