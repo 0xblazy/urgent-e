@@ -18,9 +18,9 @@ Pour installer le projet, plusieurs choses sont à faire:
 
 Pour le moment, l'API Strapi fonctionne uniquement pour afficher des métriques sur le tableau de bord.\
 Pour l'installer, voici la marche à suivre :
-- déplacez le dossier `api-strapi` en dehors du projet `urgent-e`, sinon le projet ne compilera pas
-- dans le dossier `api-strapi` déplacé, faites la commande `npm install` pour installer le projet
-- après avoir relancé le terminal, faites `yarn run develop` pour lancer le projet
+- Déplacez le dossier `api-strapi` en dehors du projet `urgent-e`, sinon le projet ne compilera pas
+- Dans le dossier `api-strapi` déplacé, faites la commande `npm install` pour installer le projet
+- Après avoir relancé le terminal, faites `yarn run develop` pour lancer le projet
 - Ouvrez [http://localhost:1337/admin](http://localhost:1337/admin) pour vous connecter à l'interface d'administration si vous le souhaitez (les identifants sont dans le fichier `strapi_access`) à la racine du projet principal
 
 ## Utilisation
